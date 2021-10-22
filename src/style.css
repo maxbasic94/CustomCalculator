@@ -10,12 +10,12 @@ body {
 .app {
     margin: 10px auto;
     width: 420px;
-    height: 400px;
+    height: 370px;
     box-shadow: 0 5px 10px rgb(68, 68, 68);
 }
 
 .inputs {
-    height: 100px;
+    height: 70px;
     padding: 5px 10px;
     background-color: #464749;
     border-top-left-radius: 5px;
@@ -28,8 +28,8 @@ body {
     background: inherit;
     border: none;
     outline: none;
-    color: white;
-    font-size: 30px;
+    color: rgb(170, 170, 170);
+    font-size: 20px;
     text-align: right;
 }
 
@@ -43,7 +43,7 @@ body {
     border: none;
     outline: none;
     color: white;
-    font-size: 50px;
+    font-size: 40px;
     text-align: right;
 }
 
