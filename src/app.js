@@ -18,7 +18,7 @@ function getOneDevidedByNumber() {
 }
 
 function getNumberInRoot(power) {
-    if (!document.querySelector(".result")) {return}; 
+    if (!document.querySelector(".result").value) {return}; 
     let actualNumber = Number(document.querySelector(".result").value);
     document.querySelector('.result').value = Math.pow(actualNumber, 1 / power);
     if (power <= 2) {
@@ -45,6 +45,8 @@ const squareRootButton = document.querySelector('#squareRootButton');
 const cubeRootButton = document.querySelector('#cubeRootButton');
 const numRootButton = document.querySelector('#numRootButton');
 const expByPowerButton = document.querySelector('#expByPowerButton');
+const lnButton = document.querySelector('#lnButton');
+
 
 for (let numberButton of numberButtons) {
     numberButton.addEventListener('click', function(event) {
@@ -54,8 +56,15 @@ for (let numberButton of numberButtons) {
     });
 }
 
+lnButton.addEventListener('click', () => {
+    if (!document.querySelector(".result").value) {return};
+    let actualNumber = document.querySelector(".result").value;
+    document.querySelector(".archiv").value = 'ln(' + actualNumber + ')';
+    document.querySelector('.result').value = Math.log(actualNumber);
+})
+
 expByPowerButton.addEventListener('click', () => {
-    if (!document.querySelector(".result")) {return};
+    if (!document.querySelector(".result").value) {return};
     let actualNumber = document.querySelector(".result").value;
     document.querySelector(".archiv").value = 'exp(' + actualNumber + ')';
     document.querySelector('.result').value = Math.exp(actualNumber);
@@ -74,7 +83,7 @@ numRootButton.addEventListener('click', () => {
 })
 
 numByPowerButton.addEventListener('click', () => {
-    if (!document.querySelector(".result")) {return};
+    if (!document.querySelector(".result").value) {return};
     let actualNumber = document.querySelector(".result").value;
     document.querySelector('.archiv').value = actualNumber + '^';
     document.querySelector('.result').value = '';
@@ -82,7 +91,7 @@ numByPowerButton.addEventListener('click', () => {
 });
 
 percentButton.addEventListener('click', () => {
-    if (!document.querySelector(".result")) {return};
+    if (!document.querySelector(".result").value) {return};
     document.querySelector(".result").value /= 100;
 })
 
