@@ -46,6 +46,7 @@ const cubeRootButton = document.querySelector('#cubeRootButton');
 const numRootButton = document.querySelector('#numRootButton');
 const expByPowerButton = document.querySelector('#expByPowerButton');
 const lnButton = document.querySelector('#lnButton');
+const logButton = document.querySelector('#logButton');
 
 
 for (let numberButton of numberButtons) {
@@ -61,6 +62,13 @@ lnButton.addEventListener('click', () => {
     let actualNumber = document.querySelector(".result").value;
     document.querySelector(".archiv").value = 'ln(' + actualNumber + ')';
     document.querySelector('.result').value = Math.log(actualNumber);
+})
+
+logButton.addEventListener('click', () => {
+    if (!document.querySelector(".result").value) {return};
+    let actualNumber = document.querySelector(".result").value;
+    document.querySelector(".archiv").value = 'log10(' + actualNumber + ')';
+    document.querySelector('.result').value = Math.log10(actualNumber);
 })
 
 expByPowerButton.addEventListener('click', () => {
