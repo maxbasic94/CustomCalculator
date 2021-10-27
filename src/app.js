@@ -29,6 +29,8 @@ const squareButton = document.querySelector('#squareButton');
 const cubeButton = document.querySelector('#cubeButton');
 const oneDivByNumberButton = document.querySelector('#oneDivByNumberButton');
 const expButton = document.querySelector('#expButton');
+const percentButton = document.querySelector('#percentButton');
+const numByPowerButton = document.querySelector('#numByPowerButton');
 
 for (let numberButton of numberButtons) {
     numberButton.addEventListener('click', function(event) {
@@ -37,6 +39,19 @@ for (let numberButton of numberButtons) {
         result.value += number;
     });
 }
+
+numByPowerButton.addEventListener('click', () => {
+    if (!document.querySelector(".result")) {return};
+    let actualNumber = document.querySelector(".result").value;
+    document.querySelector('.archiv').value = actualNumber + '^';
+    document.querySelector('.result').value = '';
+    document.querySelector('.result').placeholder = '';
+});
+
+percentButton.addEventListener('click', () => {
+    if (!document.querySelector(".result")) {return};
+    document.querySelector(".result").value /= 100;
+})
 
 squareButton.addEventListener('click', () => getNumberInPower(2));
 
@@ -51,6 +66,7 @@ expButton.addEventListener('click', () => {
 clearButton.addEventListener('click', () => {
     document.querySelector('.result').value = '';
     document.querySelector('.archiv').value = '';
+    document.querySelector('.result').placeholder = '0';
 });
 
 backspaceButton.addEventListener('click', () => {
@@ -92,5 +108,9 @@ equalButton.addEventListener('click', () => {
     if (sign === '/') {
         res = firstNumber / secondNumber;
     }
+    if (sign === '^') {
+        res = Math.pow(firstNumber, secondNumber);
+    }
+    document.querySelector('.archiv').value += secondNumber;
     document.querySelector('.result').value = res;
 });
