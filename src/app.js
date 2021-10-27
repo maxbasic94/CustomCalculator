@@ -28,6 +28,32 @@ function getNumberInRoot(power) {
     }
 }
 
+function performMemoryOptions(memoryButton) {
+    switch (memoryButton) {
+        case 'memoryClearButton':
+            memory = '';
+          break;
+        case 'memoryReadButton':
+            if (memory) {
+                document.querySelector(".result").value = memory;
+            }
+          break;
+        case 'memoryDivButton':
+            if(document.querySelector(".result").value) {
+                memory -= document.querySelector(".result").value;
+            }
+          break;
+        case 'memoryAddButton':
+            if(document.querySelector(".result").value) {
+                memory += document.querySelector(".result").value;
+            }
+          break;
+        default:
+            return;
+    }
+}
+
+let memory = '';
 const numberButtons = document.querySelectorAll('.btn-numb');
 const clearButton = document.querySelector('#clearButton');
 const addButton = document.querySelector('#addButton');
@@ -47,6 +73,7 @@ const numRootButton = document.querySelector('#numRootButton');
 const expByPowerButton = document.querySelector('#expByPowerButton');
 const lnButton = document.querySelector('#lnButton');
 const logButton = document.querySelector('#logButton');
+const memoryButtons = document.querySelectorAll('.memory');
 
 
 for (let numberButton of numberButtons) {
@@ -55,6 +82,10 @@ for (let numberButton of numberButtons) {
         let result = document.querySelector('.result');
         result.value += number;
     });
+}
+
+for (let memoryButton of memoryButtons) {
+    memoryButton.addEventListener('click', (e) => performMemoryOptions(e.target.id));
 }
 
 lnButton.addEventListener('click', () => {
