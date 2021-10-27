@@ -177,7 +177,7 @@ equalButton.addEventListener('click', () => {
     let sign = document.querySelector('.archiv').value.slice(-1);
     let firstNumber = Number(document.querySelector('.archiv').value.slice(0, -1));
     let secondNumber = Number(document.querySelector('.result').value);
-    
+
     switch (sign) {
         case '+':
             res = firstNumber + secondNumber;
@@ -189,7 +189,12 @@ equalButton.addEventListener('click', () => {
             res = firstNumber * secondNumber;
           break;
         case '/':
-            res = firstNumber / secondNumber;
+            if (secondNumber === 0) {
+                document.querySelector('.result').value = 'division by zero';
+                return
+            } else {
+                res = firstNumber / secondNumber;
+            }
           break;
         case '^':
                 res = Math.pow(firstNumber, secondNumber);
