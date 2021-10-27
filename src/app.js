@@ -5,16 +5,27 @@ function setSimpleMathOptions(operation) {
     document.querySelector('.result').placeholder = '';
 }
 
-function getNumberInPower(power){
+function getNumberInPower(power) {
     let actualNumber = Number(document.querySelector(".result").value);
     document.querySelector('.result').value = Math.pow(actualNumber, power);
     document.querySelector('.archiv').value = actualNumber + '^' + power;
 }
 
-function getOneDevidedByNumber(){
+function getOneDevidedByNumber() {
     let actualNumber = Number(document.querySelector(".result").value);
     document.querySelector(".result").value = Number(1 / actualNumber).toFixed(10);
     document.querySelector('.archiv').value = '1/' + actualNumber;
+}
+
+function getNumberInRoot(power) {
+    if (!document.querySelector(".result")) {return}; 
+    let actualNumber = Number(document.querySelector(".result").value);
+    document.querySelector('.result').value = Math.pow(actualNumber, 1 / power);
+    if (power <= 2) {
+        document.querySelector('.archiv').value = '\u221A' + actualNumber;
+    } else {
+        document.querySelector('.archiv').value = power + '\u221A' + actualNumber;
+    }
 }
 
 const numberButtons = document.querySelectorAll('.btn-numb');
@@ -30,7 +41,8 @@ const cubeButton = document.querySelector('#cubeButton');
 const oneDivByNumberButton = document.querySelector('#oneDivByNumberButton');
 const expButton = document.querySelector('#expButton');
 const percentButton = document.querySelector('#percentButton');
-const numByPowerButton = document.querySelector('#numByPowerButton');
+const squareRootButton = document.querySelector('#squareRootButton');
+const cubeRootButton = document.querySelector('#cubeRootButton');
 
 for (let numberButton of numberButtons) {
     numberButton.addEventListener('click', function(event) {
@@ -39,6 +51,10 @@ for (let numberButton of numberButtons) {
         result.value += number;
     });
 }
+
+squareRootButton.addEventListener('click', () => getNumberInRoot(2));
+
+cubeRootButton.addEventListener('click', () => getNumberInRoot(3))
 
 numByPowerButton.addEventListener('click', () => {
     if (!document.querySelector(".result")) {return};
