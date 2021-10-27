@@ -43,6 +43,7 @@ const expButton = document.querySelector('#expButton');
 const percentButton = document.querySelector('#percentButton');
 const squareRootButton = document.querySelector('#squareRootButton');
 const cubeRootButton = document.querySelector('#cubeRootButton');
+const numRootButton = document.querySelector('#numRootButton');
 
 for (let numberButton of numberButtons) {
     numberButton.addEventListener('click', function(event) {
@@ -55,6 +56,14 @@ for (let numberButton of numberButtons) {
 squareRootButton.addEventListener('click', () => getNumberInRoot(2));
 
 cubeRootButton.addEventListener('click', () => getNumberInRoot(3))
+
+numRootButton.addEventListener('click', () => {
+    if (!document.querySelector(".result").value) {return};
+    let actualNumber = document.querySelector(".result").value;
+    document.querySelector('.archiv').value = actualNumber + '\u221A';
+    document.querySelector('.result').value = '';
+    document.querySelector('.result').placeholder = '';
+})
 
 numByPowerButton.addEventListener('click', () => {
     if (!document.querySelector(".result")) {return};
@@ -112,21 +121,43 @@ equalButton.addEventListener('click', () => {
     let sign = document.querySelector('.archiv').value.slice(-1);
     let firstNumber = Number(document.querySelector('.archiv').value.slice(0, -1));
     let secondNumber = Number(document.querySelector('.result').value);
-    if (sign === '+') {
-        res = firstNumber + secondNumber;
-    }
-    if (sign === '-') {
-        res = firstNumber - secondNumber;
-    }
-    if (sign === '*') {
-        res = firstNumber * secondNumber;
-    }
-    if (sign === '/') {
-        res = firstNumber / secondNumber;
-    }
-    if (sign === '^') {
-        res = Math.pow(firstNumber, secondNumber);
-    }
+    // if (sign === '+') {
+    //     res = firstNumber + secondNumber;
+    // } else if (sign === '-') {
+    //     res = firstNumber - secondNumber;
+    // } else if (sign === '*') {
+    //     res = firstNumber * secondNumber;
+    // } else if (sign === '/') {
+    //     res = firstNumber / secondNumber;
+    // } else if (sign === '^' && firstNumber >= 4) {
+    //     res = Math.pow(firstNumber, secondNumber);
+    // } else if (sign === '√' && firstNumber >= 4) {
+    //     res = Math.pow(firstNumber, 1 / secondNumber);
+    // } else {
+    //     return;
+    // }
+    switch (sign) {
+        case '+':
+            res = firstNumber + secondNumber;
+          break;
+        case '-':
+            res = firstNumber - secondNumber;
+          break;
+        case '*':
+            res = firstNumber * secondNumber;
+          break;
+        case '/':
+            res = firstNumber / secondNumber;
+          break;
+        case '^':
+                res = Math.pow(firstNumber, secondNumber);
+          break;
+        case '√':
+                res = Math.pow(firstNumber, 1 / secondNumber);
+          break;
+        default:
+          return;
+      }
     document.querySelector('.archiv').value += secondNumber;
     document.querySelector('.result').value = res;
 });
