@@ -44,6 +44,7 @@ const percentButton = document.querySelector('#percentButton');
 const squareRootButton = document.querySelector('#squareRootButton');
 const cubeRootButton = document.querySelector('#cubeRootButton');
 const numRootButton = document.querySelector('#numRootButton');
+const expByPowerButton = document.querySelector('#expByPowerButton');
 
 for (let numberButton of numberButtons) {
     numberButton.addEventListener('click', function(event) {
@@ -52,6 +53,13 @@ for (let numberButton of numberButtons) {
         result.value += number;
     });
 }
+
+expByPowerButton.addEventListener('click', () => {
+    if (!document.querySelector(".result")) {return};
+    let actualNumber = document.querySelector(".result").value;
+    document.querySelector(".archiv").value = 'exp(' + actualNumber + ')';
+    document.querySelector('.result').value = Math.exp(actualNumber);
+})
 
 squareRootButton.addEventListener('click', () => getNumberInRoot(2));
 
@@ -116,26 +124,12 @@ divButton.addEventListener('click', (e) => {
 });
 
 equalButton.addEventListener('click', () => {
-    if (!document.querySelector('.archiv').value) {return};
     let res;
+    if (!document.querySelector('.archiv').value) {return};
     let sign = document.querySelector('.archiv').value.slice(-1);
     let firstNumber = Number(document.querySelector('.archiv').value.slice(0, -1));
     let secondNumber = Number(document.querySelector('.result').value);
-    // if (sign === '+') {
-    //     res = firstNumber + secondNumber;
-    // } else if (sign === '-') {
-    //     res = firstNumber - secondNumber;
-    // } else if (sign === '*') {
-    //     res = firstNumber * secondNumber;
-    // } else if (sign === '/') {
-    //     res = firstNumber / secondNumber;
-    // } else if (sign === '^' && firstNumber >= 4) {
-    //     res = Math.pow(firstNumber, secondNumber);
-    // } else if (sign === '√' && firstNumber >= 4) {
-    //     res = Math.pow(firstNumber, 1 / secondNumber);
-    // } else {
-    //     return;
-    // }
+    
     switch (sign) {
         case '+':
             res = firstNumber + secondNumber;
@@ -156,8 +150,9 @@ equalButton.addEventListener('click', () => {
                 res = Math.pow(firstNumber, 1 / secondNumber);
           break;
         default:
-          return;
-      }
+            return;
+    }
+   
     document.querySelector('.archiv').value += secondNumber;
     document.querySelector('.result').value = res;
 });
