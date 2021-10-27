@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>CustomCalculator</title>
         <meta charset="utf-8">
         <script defer src="./bundle.js"></script>
         <link rel="stylesheet" href="../src/style.css">
+        <link rel="shortcut icon" href="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/000000/external-calculator-advertising-kiranshastry-lineal-kiranshastry.png" type="image/x-icon">
     </head>
     <body>
         <div class="app">
             <div class="inputs">
-                <input type="text" class="expression" placeholder="0.0">
-                <input type="text" class="result" placeholder="0.0" readonly>
+                <input type="text" class="archiv" placeholder="0" readonly>
+                <input type="text" class="result" placeholder="0" readonly maxlength="10">
             </div>
             <div class="buttons">
                 <button class="btn btn-func">mc</button>
                 <button class="btn btn-func">m+</button>
                 <button class="btn btn-func">m-</button>
                 <button class="btn btn-func">mr</button>
-                <button value='AC' class="btn btn-func">AC</button>
-                <button value='C' class="btn btn-func">C</button>
-                <button value='/' class="btn btn-orange"><img src="https://img.icons8.com/material-outlined/24/ffffff/divide.png"/></button>
+                <button value='AC' class="btn btn-func" id='clearButton'>AC</button>
+                <button value='C' class="btn btn-func" id='backspaceButton'><img src="https://img.icons8.com/ios-glyphs/26/ffffff/clear-symbol.png" class="btn-image"/></button>
+                <button value='/' class="btn btn-orange" id="divButton"><img src="https://img.icons8.com/material-outlined/24/ffffff/divide.png" class="btn-image"/></button>
                 <button value ='%' class="btn btn-func">%</button>
-                <button value='2,7182818284590452353602874713527' class="btn btn-func">e</button>
-                <button value='^2' class="btn btn-func">x<sup>2</sup></button>
+                <button class="btn btn-func" id="expButton">e</button>
+                <button value='^2' class="btn btn-func" id="squareButton">x<sup>2</sup></button>
                 <button value='7' class="btn btn-numb" id="number7">7</button>
                 <button value='8' class="btn btn-numb">8</button>
                 <button value='9' class="btn btn-numb">9</button>
-                <button value='*' class="btn btn-orange"><img src="https://img.icons8.com/material-outlined/24/ffffff/multiply--v1.png"/></button>
-                <button value='^3' class="btn btn-func">x<sup>3</sup></button>
+                <button value='*' class="btn btn-orange" id="mulButton"><img src="https://img.icons8.com/material-outlined/24/ffffff/multiply--v1.png" class="btn-image"/></button>
+                <button value='^3' class="btn btn-func" id="cubeButton">x<sup>3</sup></button>
                 <button value='^' class="btn btn-func">x<sup>y</sup></button>
                 <button class="btn btn-func">e<sup>x</sup></button>
                 <button value='4' class="btn btn-numb">4</button>
                 <button value='5' class="btn btn-numb">5</button>
                 <button value='6' class="btn btn-numb">6</button>
-                <button value='-'class="btn btn-orange">-</button>
-                <button class="btn btn-func">1/x</button>
+                <button value='-'class="btn btn-orange" id="subButton">-</button>
+                <button class="btn btn-func" id="oneDivByNumberButton">1/x</button>
                 <button class="btn btn-func"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                     width="24" height="24"
                     viewBox="0 0 172 172"
@@ -47,7 +49,7 @@
                 <button value='1' class="btn btn-numb">1</button>
                 <button value='2' class="btn btn-numb">2</button>
                 <button value='3' class="btn btn-numb">3</button>
-                <button value='+' class="btn btn-orange">+</button>
+                <button value='+' class="btn btn-orange" id="addButton">+</button>
                 <button class="btn btn-func"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                     width="24" height="24"
                     viewBox="0 0 172 172"
@@ -57,7 +59,7 @@
                 <button class="btn btn-func">log<sub>10</sub></button>
                 <button value='0' class="btn btn-zero btn-numb">0</button>
                 <button value='.' class="btn btn-numb">,</button>
-                <button class="btn btn-orange" id="equal">=</button>
+                <button class="btn btn-orange" id="equalButton">=</button>
             </div>
         </div>
     </body>
