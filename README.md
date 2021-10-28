@@ -1,7 +1,7 @@
 # CustomCalculator
 
 This application represents simple calculator, which does one operation at a time. \
-You can check how it works here https://custom-calc.netlify.app/
+You can check how it works here: https://custom-calc.netlify.app/
 
 ## Task
 
