@@ -9,9 +9,9 @@ link on the document: https://docs.google.com/document/d/1j8DnTnRSNoRBdYtKu3Rgk1
 
 ## How to use
 
-To enter a number press buttons 1 - 9. \
-To completely erase an expression or end result, press AC. \
-To erase part of the expression, press ![alt text](https://img.icons8.com/ios-glyphs/12/ffffff/clear-symbol.png). \
+Press buttons 1 - 9 to enter a numbers. \
+Press "AC" to completely erase an expression or end result. \
+Press ![alt text](https://img.icons8.com/ios-glyphs/12/ffffff/clear-symbol.png) to erase part of the expression. \
 Press "M+" to add the displayed value to the existing number in memory. \
 Press "M-" to subtract the displayed value from the number in memory. \
 Press "MC" to clear memory. \
