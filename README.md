@@ -14,23 +14,18 @@ To completely erase an expression or end result, press AC. \
 To erase part of the expression, press ![alt text](https://img.icons8.com/ios-glyphs/12/ffffff/clear-symbol.png). 
 
 Basic operations: \
-| Operation  | Description \
-|------------|------------ \
-| +          | Addition \
-| -          | Subtraction \
-| *          | Multiplication \
-| /          | Division \
-| ^          | Exponentiation \
-| yx         | "y" to the power of "x" \
-| √          | Square root \
-| e          | Exhibitor \
-| ln         | Natural logarithm \
-| log        | Decimal logarithm \
-| %          | Percent
-
-| #Operation | #Description |
+| Operation | Description |
 | :---: | :---: |
 | +  | Addition |
 | - | Subtraction |
+| *  | Multiplication |
+| / | Division |
+| ^  | Exponentiation |
+| yx | "y" to the power of "x" |
+| √  | Square root |
+| e | Exhibitor |
+| ln  | Natural logarithm |
+| log | Decimal logarithm |
+| %  | Percent |
 
 ## folder structure
