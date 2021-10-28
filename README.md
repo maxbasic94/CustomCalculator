@@ -28,8 +28,8 @@ Basic operations: \
 | log        | Decimal logarithm \
 | %          | Percent
 
-| Attempt | #1 | #2 |
-| :---: | :---: | :---: |
-| Seconds | 301 | 283 |
+| #1 | #2 |
+| :---: | :---: |
+| 301 | 283 |
 
 ## folder structure
