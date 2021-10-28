@@ -30,7 +30,7 @@ Basic operations:
 | xʸ | "x" to the power of "y" |
 | √ | Square root |
 | ³√ | Cube root |
-| ʸ√ | "y"root |
+| ʸ√ | "y" root |
 | e | Exhibitor |
 | eˣ | Exhibitor to power "x" |
 | ln | Natural logarithm |
