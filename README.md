@@ -20,17 +20,22 @@ Press "MR" to read number from memory.
 Basic operations:
 | Operation | Description |
 | :---: | :---: |
-| +  | Addition |
+| + | Addition |
 | - | Subtraction |
-| *  | Multiplication |
+| * | Multiplication |
 | / | Division |
-| ^  | Exponentiation |
-| yx | "y" to the power of "x" |
-| √  | Square root |
+| ^ | Exponentiation |
+| x² | "x" to square |
+| x³ | "x" to cube |
+| xʸ | "x" to the power of "y" |
+| √ | Square root |
+| ³√ | Cube root |
+| ʸ√ | "y"root |
 | e | Exhibitor |
-| ln  | Natural logarithm |
+| eˣ | Exhibitor to power "x" |
+| ln | Natural logarithm |
 | log | Decimal logarithm |
-| %  | Percent |
+| % | Percent |
 
 ## Folder structure
 
