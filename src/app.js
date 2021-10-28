@@ -74,6 +74,7 @@ const expByPowerButton = document.querySelector('#expByPowerButton');
 const lnButton = document.querySelector('#lnButton');
 const logButton = document.querySelector('#logButton');
 const memoryButtons = document.querySelectorAll('.memory');
+const numByPowerButton = document.querySelector('#numByPowerButton');
 
 
 for (let numberButton of numberButtons) {
