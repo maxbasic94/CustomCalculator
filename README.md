@@ -28,4 +28,4 @@ Basic operations:
 | log | Decimal logarithm |
 | %  | Percent |
 
-## folder structure
+## Folder structure
