@@ -238,9 +238,4 @@ mulButton.addEventListener('click', (e) => {setSimpleMathOptions(e.currentTarget
 divButton.addEventListener('click', (e) => {setSimpleMathOptions(e.currentTarget.value)});
 equalButton.addEventListener('click', performEqualOperation);
 
-module.exports = {
-    getSum,
-    getSub,
-    getMul,
-    getDiv
- }
+module.exports = getSum;
