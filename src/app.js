@@ -1,8 +1,8 @@
 function setSimpleMathOptions(operation) {
     let actualNumber = resultInput.value;
-    archivInput.value = actualNumber + operation;
     resultInput.value = '';
     resultInput.placeholder = '';
+    return actualNumber + operation;
 }
 
 function getNumberInPower(power) {
@@ -36,9 +36,9 @@ function getNumberInRoot(power) {
 function performNumByPower() {
     if (!resultInput.value) {return};
     let actualNumber = resultInput.value;
-    archivInput.value = actualNumber + '^';
     resultInput.value = '';
     resultInput.placeholder = '';
+    return actualNumber + '^';
 }
 
 function performPercentOperation() {
@@ -80,9 +80,10 @@ function performExpByPower() {
 function performNumRoot() {
     if (!resultInput.value) {return};
     let actualNumber = resultInput.value;
-    archivInput.value = actualNumber + '\u221A';
     resultInput.placeholder = '';
     resultInput.value = '';
+    return actualNumber + '\u221A';
+
 }
 
 function performClearOperation() {
@@ -92,8 +93,7 @@ function performClearOperation() {
 }
 
 function performBackspaceOperation() {
-    let numberWithoutLastSymbol = resultInput.value.slice(0, -1);
-    resultInput.value = numberWithoutLastSymbol;
+    return resultInput.value.slice(0, -1);
 }
 
 function getSum(num1, num2) {
@@ -153,7 +153,7 @@ function performEqualOperation() {
             return;
     }
     archivInput.value += secondNumber;
-    resultInput.value = res;
+    return res;
 }
 
 function performMemoryOptions(memoryButton) {
@@ -223,19 +223,19 @@ logButton.addEventListener('click', () => {resultInput.value = performDecimalLog
 expByPowerButton.addEventListener('click', () => {resultInput.value = performExpByPower()});
 squareRootButton.addEventListener('click', () => {resultInput.value = getNumberInRoot(2)});
 cubeRootButton.addEventListener('click', () => {resultInput.value = getNumberInRoot(3)});
-numRootButton.addEventListener('click', performNumRoot);
-numByPowerButton.addEventListener('click', performNumByPower);
+numRootButton.addEventListener('click', () => {archivInput.value = performNumRoot()});
+numByPowerButton.addEventListener('click', () => {archivInput.value = performNumByPower()});
 percentButton.addEventListener('click', () => {resultInput.value = performPercentOperation()});
 squareButton.addEventListener('click', () => {resultInput.value = getNumberInPower(2)});
 cubeButton.addEventListener('click', () => {resultInput.value = getNumberInPower(3)});
 oneDivByNumberButton.addEventListener('click', () => {resultInput.value = getOneDevidedByNumber()});
 expButton.addEventListener('click', () => {resultInput.value = Math.exp(1)});
 clearButton.addEventListener('click', performClearOperation);
-backspaceButton.addEventListener('click', performBackspaceOperation);
-addButton.addEventListener('click', (e) => {setSimpleMathOptions(e.target.value)});
-subButton.addEventListener('click', (e) => {setSimpleMathOptions(e.target.value)});
-mulButton.addEventListener('click', (e) => {setSimpleMathOptions(e.currentTarget.value)});
-divButton.addEventListener('click', (e) => {setSimpleMathOptions(e.currentTarget.value)});
+backspaceButton.addEventListener('click', () => {resultInput.value = performBackspaceOperation()});
+addButton.addEventListener('click', (e) => {archivInput = setSimpleMathOptions(e.target.value)});
+subButton.addEventListener('click', (e) => {archivInput = setSimpleMathOptions(e.target.value)});
+mulButton.addEventListener('click', (e) => {archivInput = setSimpleMathOptions(e.currentTarget.value)});
+divButton.addEventListener('click', (e) => {archivInput = setSimpleMathOptions(e.currentTarget.value)});
 equalButton.addEventListener('click', performEqualOperation);
 
 module.exports = getSum;
