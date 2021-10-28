@@ -39,4 +39,4 @@ index.html - contains html markup. \
 style.css - contains style sheets. \
 bundle.js - contains JavaScript code. 
 2. Folder "node_modules" contains all node packages. 
-3. Folder "src" contains file "app.js", which contains the main java script code. 
+3. Folder "src" contains file "app.js", which contains the main JavaScript code. 
