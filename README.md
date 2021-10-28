@@ -28,8 +28,9 @@ Basic operations: \
 | log        | Decimal logarithm \
 | %          | Percent
 
-| #1 | #2 |
+| #Operation | #Description |
 | :---: | :---: |
-| 301 | 283 |
+| +  | Addition |
+| - | Subtraction |
 
 ## folder structure
