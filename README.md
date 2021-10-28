@@ -12,6 +12,10 @@ link on the document: https://docs.google.com/document/d/1j8DnTnRSNoRBdYtKu3Rgk1
 To enter a number press buttons 1 - 9. \
 To completely erase an expression or end result, press AC. \
 To erase part of the expression, press ![alt text](https://img.icons8.com/ios-glyphs/12/ffffff/clear-symbol.png). 
+Press "M+" to add the displayed value to the existing number in memory. \
+Press "M-" to subtract the displayed value from the number in memory. \
+Press "MC" to clear memory. \
+Press "MR" to read number from memory.
 
 Basic operations:
 | Operation | Description |
