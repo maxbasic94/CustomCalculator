@@ -13,7 +13,7 @@ To enter a number press buttons 1 - 9. \
 To completely erase an expression or end result, press AC. \
 To erase part of the expression, press ![alt text](https://img.icons8.com/ios-glyphs/12/ffffff/clear-symbol.png). 
 
-Basic operations: \
+Basic operations:
 | Operation | Description |
 | :---: | :---: |
 | +  | Addition |
