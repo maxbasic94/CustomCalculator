@@ -11,7 +11,7 @@ link on the document: https://docs.google.com/document/d/1j8DnTnRSNoRBdYtKu3Rgk1
 
 To enter a number press buttons 1 - 9. 
 To completely erase an expression or end result, press AC. \
-To erase part of the expression, press ![alt text](https://img.icons8.com/ios-glyphs/26/ffffff/clear-symbol.png). \
+To erase part of the expression, press ![alt text](https://img.icons8.com/ios-glyphs/12/ffffff/clear-symbol.png). \
 
 Basic operations: \
 | Operation  | Description \
