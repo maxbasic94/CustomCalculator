@@ -1,3 +1,6 @@
+import {hello} from './hello';
+console.log(hello('maxon'));
+
 function setSimpleMathOptions(operation) {
     let actualNumber = resultInput.value;
     archivInput.value = actualNumber + operation;
@@ -237,5 +240,3 @@ subButton.addEventListener('click', (e) => {setSimpleMathOptions(e.target.value)
 mulButton.addEventListener('click', (e) => {setSimpleMathOptions(e.currentTarget.value)});
 divButton.addEventListener('click', (e) => {setSimpleMathOptions(e.currentTarget.value)});
 equalButton.addEventListener('click', performEqualOperation);
-
-module.exports = sum;
