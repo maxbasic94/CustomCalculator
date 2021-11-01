@@ -1,7 +1,14 @@
-import {getSum, getSub, getMul, getDiv, getPow, getSquare, setSimpleMathOptions,
-        getNumberInPower, getOneDevidedByNumber, getNumberInRoot, performNumByPower,
+import {setSimpleMathOptions, getNumberInPower, getOneDevidedByNumber, getNumberInRoot, performNumByPower,
         performPercentOperation, performNaturalLog, performDecimalLog, performExpByPower,
         performNumRoot, performClearOperation, performBackspaceOperation} from './functions';
+import AddCommand from './classes/AddCommand'
+import SubCommand from './classes/SubCommand'
+import MulCommand from './classes/MulCommand'
+import DivCommand from './classes/DivCommand'
+import PowCommand from './classes/PowCommand'
+import SquareCommand from './classes/SquareCommand'
+
+
 
 function performEqualOperation() {
     let res;
@@ -11,22 +18,22 @@ function performEqualOperation() {
     let secondNumber = Number(resultInput.value);
     switch (sign) {
         case '+':
-            res = getSum(firstNumber, secondNumber);
+            res = new AddCommand(firstNumber, secondNumber).execute();
           break;
         case '-':
-            res = getSub(firstNumber, secondNumber);
+            res = new SubCommand(firstNumber, secondNumber).execute();
           break;
         case '*':
-            res = getMul(firstNumber, secondNumber);
+            res = new MulCommand(firstNumber, secondNumber).execute();
           break;
         case '/':
-            res = getDiv(firstNumber, secondNumber);
+            res = new DivCommand(firstNumber, secondNumber).execute();
           break;
         case '^':
-            res = getPow(firstNumber, secondNumber);
+            res = new PowCommand(firstNumber, secondNumber).execute();
           break;
         case '√':
-            res = getSquare(firstNumber, secondNumber);
+            res = new SquareCommand(firstNumber, secondNumber).execute();
           break;
         default:
             return;

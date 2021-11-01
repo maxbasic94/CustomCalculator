@@ -1,31 +1,3 @@
-function getSum(num1, num2) {
-    return num1 + num2;
-}
-
-function getSub(num1, num2) {
-    return num1 - num2;
-}
-
-function getMul(num1, num2) {
-    return num1 * num2;
-}
-
-function getDiv(num1, num2) {
-    if (num2 === 0) {
-        return 'division by zero';
-    } else {
-        return num1 / num2;
-    }
-}
-
-function getPow(num, pow) {
-    return Math.pow(num, pow);
-}
-
-function getSquare(num, pow) {
-    return Math.pow(num, 1 / pow);
-}
-
 function setSimpleMathOptions(operation) {
     let actualNumber = resultInput.value;
     archivInput.value = actualNumber + operation;
@@ -128,8 +100,7 @@ const resultInput = document.querySelector('.result');
 const archivInput = document.querySelector('.archiv');
 
 module.exports = {
-    getSum, getSub, getMul, getDiv, getPow, getSquare, setSimpleMathOptions,
-    getNumberInPower, getOneDevidedByNumber, getNumberInRoot, performNumByPower,
+    setSimpleMathOptions, getNumberInPower, getOneDevidedByNumber, getNumberInRoot, performNumByPower,
     performPercentOperation, performNaturalLog, performDecimalLog, performExpByPower,
     performNumRoot, performClearOperation, performBackspaceOperation
 };
