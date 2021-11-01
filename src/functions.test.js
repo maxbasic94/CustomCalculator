@@ -3,7 +3,7 @@
  */
 
 
-jest.mock('./classes/AddCommand');
+
 import AddCommand from './classes/AddCommand'
 
 test('Add 10 + 4 to equal 14', () => {
