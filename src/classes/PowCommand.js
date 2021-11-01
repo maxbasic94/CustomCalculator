@@ -8,7 +8,7 @@ class PowCommand extends Calc {
     }
     
     execute() {
-        return Math.pow(num, pow);
+        return Math.pow(this.num, this.pow);
     }
 }
 

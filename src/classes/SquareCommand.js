@@ -8,7 +8,7 @@ class SquareCommand extends Calc {
     }
     
     execute() {
-        return Math.pow(num, 1 / pow);
+        return Math.pow(this.num, 1 / this.pow);
     }
 }
 

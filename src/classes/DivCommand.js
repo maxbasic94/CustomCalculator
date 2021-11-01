@@ -8,10 +8,10 @@ class DivCommand extends Calc {
     }
     
     execute() {
-        if (num2 === 0) {
+        if (this.num2 === 0) {
             return 'division by zero';
         } else {
-            return num1 / num2;
+            return this.num1 / this.num2;
         }
     }
 }
