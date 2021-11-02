@@ -39,8 +39,12 @@ Basic operations:
 
 ## Folder structure
 
-1. The project build is located in the folder "dist". The build consists of 3 files: \
-index.html - contains html markup. \
-style.css - contains style sheets. \
-bundle.js - contains JavaScript code.  
-2. Folder "src" contains file "app.js", which contains the main JavaScript code. 
+1. The project build is located in the folder "dist". The build consists of 3 files: 
+* index.html - contains html markup. 
+* style.css - contains style sheets. 
+* bundle.js - contains JavaScript code.  
+2. Folder "src" contains folder "classes" and some files: 
+* folder "classes" - contains files with classes.
+* app.js - contains main JavaScrip code.
+* fuctions.js - contains secondary functions.
+* functions.test.js - contains unit tests for classes.
