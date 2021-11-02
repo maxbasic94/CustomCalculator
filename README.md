@@ -5,7 +5,7 @@ You can check how it works here: https://custom-calc.netlify.app/
 
 ## Task
 
-link on the document: https://docs.google.com/document/d/1j8DnTnRSNoRBdYtKu3Rgk1STLso4X5Rev2-oEyxMsK8/edit#
+Link on the document: https://docs.google.com/document/d/1j8DnTnRSNoRBdYtKu3Rgk1STLso4X5Rev2-oEyxMsK8/edit#
 
 ## How to use
 
