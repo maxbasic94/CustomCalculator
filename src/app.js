@@ -7,6 +7,7 @@ import MulCommand from './classes/MulCommand'
 import DivCommand from './classes/DivCommand'
 import PowCommand from './classes/PowCommand'
 import SquareCommand from './classes/SquareCommand'
+import Memory from './classes/Memory';
 
 
 
@@ -42,32 +43,7 @@ function performEqualOperation() {
     resultInput.value = res;
 }
 
-function performMemoryOptions(memoryButton) {
-    switch (memoryButton) {
-        case 'memoryClearButton':
-            memory = '';
-          break;
-        case 'memoryReadButton':
-            if (memory) {
-                resultInput.value = memory;
-            }
-          break;
-        case 'memoryDivButton':
-            if(resultInput.value) {
-                memory -= resultInput.value;
-            }
-          break;
-        case 'memoryAddButton':
-            if(resultInput.value) {
-                memory += resultInput.value;
-            }
-          break;
-        default:
-            return;
-    }
-}
-
-let memory = '';
+let memory = new Memory('');
 const resultInput = document.querySelector('.result');
 const archivInput = document.querySelector('.archiv');
 const numberButtons = document.querySelectorAll('.btn-numb');
@@ -101,7 +77,24 @@ for (let numberButton of numberButtons) {
 }
 
 for (let memoryButton of memoryButtons) {
-    memoryButton.addEventListener('click', (e) => performMemoryOptions(e.target.id));
+  memoryButton.addEventListener('click', (e) => {
+    switch (e.target.id) {
+      case 'memoryClearButton':
+        memory.clear();
+        break;
+      case 'memoryAddButton':
+        memory.writeAdd(resultInput.value)
+        break;
+      case 'memoryDivButton':
+        memory.writeSub(resultInput.value)
+        break;
+      case 'memoryReadButton':
+        resultInput.value = memory.read()
+        break;
+      default:
+        break;
+    }
+  });
 }
 
 document.querySelector('.buttons').addEventListener('click', () => setButtonsDisable());
