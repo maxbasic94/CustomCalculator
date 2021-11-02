@@ -44,7 +44,7 @@ Basic operations:
     * style.css - contains style sheets. 
     * bundle.js - contains JavaScript code.  
 2. Folder "src" contains folder "classes" and some files: 
-* folder "classes" - contains files with classes.
-* app.js - contains main JavaScrip code.
-* fuctions.js - contains secondary functions.
-* functions.test.js - contains unit tests for classes.
+    * folder "classes" - contains files with classes.
+    * app.js - contains main JavaScrip code.
+    * fuctions.js - contains secondary functions.
+    * functions.test.js - contains unit tests for classes.
