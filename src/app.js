@@ -1,6 +1,6 @@
 import {setSimpleMathOptions, getNumberInPower, getOneDevidedByNumber, getNumberInRoot, performNumByPower,
         performPercentOperation, performNaturalLog, performDecimalLog, performExpByPower,
-        performNumRoot, performClearOperation, performBackspaceOperation} from './functions';
+        performNumRoot, performClearOperation, performBackspaceOperation, setButtonsDisable} from './functions';
 import AddCommand from './classes/AddCommand'
 import SubCommand from './classes/SubCommand'
 import MulCommand from './classes/MulCommand'
@@ -93,17 +93,18 @@ const memoryButtons = document.querySelectorAll('.memory');
 const numByPowerButton = document.querySelector('#numByPowerButton');
 
 for (let numberButton of numberButtons) {
-    numberButton.addEventListener('click', function(event) {
-        let number = event.target.value;
-        let result = resultInput;
-        result.value += number;
-    });
+  numberButton.addEventListener('click', function(event) {
+    let number = event.target.value;
+    let result = resultInput;
+    result.value += number;
+  });
 }
 
 for (let memoryButton of memoryButtons) {
     memoryButton.addEventListener('click', (e) => performMemoryOptions(e.target.id));
 }
 
+document.querySelector('.buttons').addEventListener('click', () => setButtonsDisable());
 lnButton.addEventListener('click', () => {resultInput.value = performNaturalLog()});
 logButton.addEventListener('click', () => {resultInput.value = performDecimalLog()});
 expByPowerButton.addEventListener('click', () => {resultInput.value = performExpByPower()});

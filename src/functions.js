@@ -89,6 +89,9 @@ function performClearOperation() {
     resultInput.value = '';
     archivInput.value = '';
     resultInput.placeholder = '0';
+    for (let button of allButtons) {
+        button.removeAttribute("disabled");
+    }
 }
 
 function performBackspaceOperation() {
@@ -96,11 +99,22 @@ function performBackspaceOperation() {
     resultInput.value = numberWithoutLastSymbol;
 }
 
+function setButtonsDisable() {
+    if (resultInput.value === 'division by zero') {
+        for (let button of allButtons) {
+        if(button.id !== 'clearButton') {button.setAttribute("disabled", true)}
+        }
+    } else {
+        return;
+    }
+}
+
 const resultInput = document.querySelector('.result');
 const archivInput = document.querySelector('.archiv');
+const allButtons = document.querySelectorAll('.btn');
 
 module.exports = {
     setSimpleMathOptions, getNumberInPower, getOneDevidedByNumber, getNumberInRoot, performNumByPower,
     performPercentOperation, performNaturalLog, performDecimalLog, performExpByPower,
-    performNumRoot, performClearOperation, performBackspaceOperation
+    performNumRoot, performClearOperation, performBackspaceOperation, setButtonsDisable
 };
