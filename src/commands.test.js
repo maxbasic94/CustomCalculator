@@ -2,12 +2,12 @@
  * @jest-environment jsdom
  */
 
- import AddCommand from './classes/AddCommand'
- import SubCommand from './classes/SubCommand'
- import MulCommand from './classes/MulCommand'
- import DivCommand from './classes/DivCommand'
- import PowCommand from './classes/PowCommand'
- import SquareCommand from './classes/SquareCommand'
+ import AddCommand from './commands/AddCommand'
+ import SubCommand from './commands/SubCommand'
+ import MulCommand from './commands/MulCommand'
+ import DivCommand from './commands/DivCommand'
+ import PowCommand from './commands/PowCommand'
+ import SquareCommand from './commands/SquareCommand'
 
 test('Add 10 + 4 to equal 14', () => {
   expect(new AddCommand(10, 4).execute()).toBe(14);
@@ -29,6 +29,6 @@ test('num 2 ^ 4 to equal 16', () => {
   expect(new PowCommand(2, 4).execute()).toBe(16);
 });
 
-test('3√27 to equal 3', () => {
-  expect(new SquareCommand(27, 3).execute()).toBe(3);
+test('4√81 to equal 3', () => {
+  expect(new SquareCommand(81, 4).execute()).toBe(3);
 });
