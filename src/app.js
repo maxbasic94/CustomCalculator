@@ -1,5 +1,4 @@
-import {performNumByPower, performNaturalLog, 
-        performDecimalLog, performExpByPower, performNumRoot} from './functions';
+import {performExpByPower} from './functions';
 import AddCommand from './commands/AddCommand'
 import SubCommand from './commands/SubCommand'
 import MulCommand from './commands/MulCommand'
@@ -9,6 +8,8 @@ import SquareCommand from './commands/SquareCommand'
 import Memory from './commands/Memory';
 import OneDivByNumCommand from './commands/OneDivByNumCommand'
 import PercentCommand from './commands/PercentCommand'
+import LnCommand from './commands/LnCommand'
+import LogCommand from './commands/LogCommand'
 
 let memory = new Memory('');
 const resultInput = document.querySelector('.result');
@@ -81,12 +82,21 @@ document.querySelector('.buttons').addEventListener('click', () => {
   }
 });
 
-lnButton.addEventListener('click', () => {resultInput.value = performNaturalLog()});
-logButton.addEventListener('click', () => {resultInput.value = performDecimalLog()});
-expByPowerButton.addEventListener('click', () => {resultInput.value = performExpByPower()});
-numRootButton.addEventListener('click', performNumRoot);
-numByPowerButton.addEventListener('click', performNumByPower);
-expButton.addEventListener('click', () => {resultInput.value = Math.exp(1)});
+numRootButton.addEventListener('click', () => {
+  if (!resultInput.value) {return};
+    let actualNumber = resultInput.value;
+    archivInput.value = actualNumber + '\u221A';
+    resultInput.placeholder = '';
+    resultInput.value = '';
+});
+
+numByPowerButton.addEventListener('click', () => {
+  if (!resultInput.value) {return};
+    let actualNumber = resultInput.value;
+    archivInput.value = actualNumber + '^';
+    resultInput.value = '';
+    resultInput.placeholder = '';
+});
 
 clearButton.addEventListener('click', () => {
   resultInput.value = '';
@@ -134,9 +144,15 @@ equalButton.addEventListener('click', () => {
   resultInput.value = res;
 });
 
+expButton.addEventListener('click', () => {resultInput.value = 2.718281828459045});
+
 oneDivByNumberButton.addEventListener('click', () => {resultInput.value = new OneDivByNumCommand(resultInput.value).execute()});
 squareRootButton.addEventListener('click', () => {resultInput.value = new SquareCommand(resultInput.value, 2).execute()});
 cubeRootButton.addEventListener('click', () => {resultInput.value = new SquareCommand(resultInput.value, 3).execute()});
 squareButton.addEventListener('click', () => {resultInput.value = new PowCommand(resultInput.value, 2).execute()});
 cubeButton.addEventListener('click', () => {resultInput.value = new PowCommand(resultInput.value, 3).execute()});
 percentButton.addEventListener('click', () => {resultInput.value = new PercentCommand(resultInput.value).execute()});
+
+lnButton.addEventListener('click', () => {resultInput.value = new LnCommand(resultInput.value).execute()});
+logButton.addEventListener('click', () => {resultInput.value = new LogCommand(resultInput.value).execute()});
+expByPowerButton.addEventListener('click', () => {resultInput.value = performExpByPower()});
