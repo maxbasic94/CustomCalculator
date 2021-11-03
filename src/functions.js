@@ -6,12 +6,12 @@ function performNumByPower() {
     resultInput.placeholder = '';
 }
 
-function performPercentOperation() {
-    if (!resultInput.value) {return ''};
-    let actualNumber =Number(resultInput.value);
-    archivInput.value = actualNumber + '%';
-    return actualNumber / 100;
-}
+// function performPercentOperation() {
+//     if (!resultInput.value) {return ''};
+//     let actualNumber =Number(resultInput.value);
+//     archivInput.value = actualNumber + '%';
+//     return actualNumber / 100;
+// }
 
 function performNaturalLog() {
     if (!resultInput.value || resultInput.value === 'ln by zero') {return ''};
@@ -54,6 +54,6 @@ const resultInput = document.querySelector('.result');
 const archivInput = document.querySelector('.archiv');
 
 module.exports = {
-    performNumByPower, performPercentOperation, performNaturalLog, 
+    performNumByPower, performNaturalLog, 
     performDecimalLog, performExpByPower, performNumRoot
 };

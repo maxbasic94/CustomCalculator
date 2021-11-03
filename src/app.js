@@ -1,4 +1,4 @@
-import {performNumByPower, performPercentOperation, performNaturalLog, 
+import {performNumByPower, performNaturalLog, 
         performDecimalLog, performExpByPower, performNumRoot} from './functions';
 import AddCommand from './commands/AddCommand'
 import SubCommand from './commands/SubCommand'
@@ -8,6 +8,7 @@ import PowCommand from './commands/PowCommand'
 import SquareCommand from './commands/SquareCommand'
 import Memory from './commands/Memory';
 import OneDivByNumCommand from './commands/OneDivByNumCommand'
+import PercentCommand from './commands/PercentCommand'
 
 let memory = new Memory('');
 const resultInput = document.querySelector('.result');
@@ -85,7 +86,6 @@ logButton.addEventListener('click', () => {resultInput.value = performDecimalLog
 expByPowerButton.addEventListener('click', () => {resultInput.value = performExpByPower()});
 numRootButton.addEventListener('click', performNumRoot);
 numByPowerButton.addEventListener('click', performNumByPower);
-percentButton.addEventListener('click', () => {resultInput.value = performPercentOperation()});
 expButton.addEventListener('click', () => {resultInput.value = Math.exp(1)});
 
 clearButton.addEventListener('click', () => {
@@ -139,3 +139,4 @@ squareRootButton.addEventListener('click', () => {resultInput.value = new Square
 cubeRootButton.addEventListener('click', () => {resultInput.value = new SquareCommand(resultInput.value, 3).execute()});
 squareButton.addEventListener('click', () => {resultInput.value = new PowCommand(resultInput.value, 2).execute()});
 cubeButton.addEventListener('click', () => {resultInput.value = new PowCommand(resultInput.value, 3).execute()});
+percentButton.addEventListener('click', () => {resultInput.value = new PercentCommand(resultInput.value).execute()});
