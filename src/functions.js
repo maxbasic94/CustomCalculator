@@ -1,14 +1,3 @@
-function getOneDevidedByNumber() {
-    if (!resultInput.value) {return ''};
-    let actualNumber = Number(resultInput.value);
-    archivInput.value = '1/' + actualNumber;
-    if (actualNumber === 0) {
-        return 'division by zero';
-    } else {
-        return Number(1 / actualNumber);
-    }
-}
-
 function performNumByPower() {
     if (!resultInput.value) {return};
     let actualNumber = resultInput.value;
@@ -61,17 +50,10 @@ function performNumRoot() {
     resultInput.value = '';
 }
 
-function performBackspaceOperation() {
-    let numberWithoutLastSymbol = resultInput.value.slice(0, -1);
-    resultInput.value = numberWithoutLastSymbol;
-}
-
 const resultInput = document.querySelector('.result');
 const archivInput = document.querySelector('.archiv');
-const allButtons = document.querySelectorAll('.btn');
 
 module.exports = {
-    getOneDevidedByNumber, performNumByPower,
-    performPercentOperation, performNaturalLog, performDecimalLog, performExpByPower,
-    performNumRoot, performClearOperation, performBackspaceOperation
+    performNumByPower, performPercentOperation, performNaturalLog, 
+    performDecimalLog, performExpByPower, performNumRoot
 };

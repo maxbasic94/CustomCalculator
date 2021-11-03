@@ -8,7 +8,8 @@ class PowCommand extends Calc {
     }
     
     execute() {
-        return Math.pow(this.num, this.pow);
+        if (this.pow === 2 || this.pow === 3) {document.querySelector('.archiv').value = this.num + '^' + this.pow}
+        return this.num ** this.pow;
     }
 }
 

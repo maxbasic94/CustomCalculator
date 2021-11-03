@@ -1,6 +1,5 @@
-import {getOneDevidedByNumber, performNumByPower,
-        performPercentOperation, performNaturalLog, performDecimalLog, performExpByPower,
-        performNumRoot, performClearOperation, performBackspaceOperation} from './functions';
+import {performNumByPower, performPercentOperation, performNaturalLog, 
+        performDecimalLog, performExpByPower, performNumRoot} from './functions';
 import AddCommand from './commands/AddCommand'
 import SubCommand from './commands/SubCommand'
 import MulCommand from './commands/MulCommand'
@@ -8,6 +7,7 @@ import DivCommand from './commands/DivCommand'
 import PowCommand from './commands/PowCommand'
 import SquareCommand from './commands/SquareCommand'
 import Memory from './commands/Memory';
+import OneDivByNumCommand from './commands/OneDivByNumCommand'
 
 let memory = new Memory('');
 const resultInput = document.querySelector('.result');
@@ -79,27 +79,29 @@ document.querySelector('.buttons').addEventListener('click', () => {
     return;
   }
 });
+
 lnButton.addEventListener('click', () => {resultInput.value = performNaturalLog()});
 logButton.addEventListener('click', () => {resultInput.value = performDecimalLog()});
 expByPowerButton.addEventListener('click', () => {resultInput.value = performExpByPower()});
 numRootButton.addEventListener('click', performNumRoot);
 numByPowerButton.addEventListener('click', performNumByPower);
 percentButton.addEventListener('click', () => {resultInput.value = performPercentOperation()});
-oneDivByNumberButton.addEventListener('click', () => {resultInput.value = getOneDevidedByNumber()});
 expButton.addEventListener('click', () => {resultInput.value = Math.exp(1)});
+
 clearButton.addEventListener('click', () => {
   resultInput.value = '';
   archivInput.value = '';
   resultInput.placeholder = '0';
   for (let button of allButtons) {
-      button.removeAttribute("disabled");
+    button.removeAttribute("disabled");
   }
 });
-backspaceButton.addEventListener('click', performBackspaceOperation);
-squareRootButton.addEventListener('click', () => {resultInput.value = new SquareCommand(resultInput.value, 2).execute()});
-cubeRootButton.addEventListener('click', () => {resultInput.value = new SquareCommand(resultInput.value, 3).execute()});
-squareButton.addEventListener('click', () => {resultInput.value = new PowCommand(resultInput.value, 2).execute()});
-cubeButton.addEventListener('click', () => {resultInput.value = new PowCommand(resultInput.value, 3).execute()});
+
+backspaceButton.addEventListener('click', () => {
+  let numberWithoutLastSymbol = resultInput.value.slice(0, -1);
+  resultInput.value = numberWithoutLastSymbol;
+});
+
 equalButton.addEventListener('click', () => {
   let res;
   if (!archivInput.value) {return};
@@ -131,3 +133,9 @@ equalButton.addEventListener('click', () => {
   archivInput.value += secondNumber;
   resultInput.value = res;
 });
+
+oneDivByNumberButton.addEventListener('click', () => {resultInput.value = new OneDivByNumCommand(resultInput.value).execute()});
+squareRootButton.addEventListener('click', () => {resultInput.value = new SquareCommand(resultInput.value, 2).execute()});
+cubeRootButton.addEventListener('click', () => {resultInput.value = new SquareCommand(resultInput.value, 3).execute()});
+squareButton.addEventListener('click', () => {resultInput.value = new PowCommand(resultInput.value, 2).execute()});
+cubeButton.addEventListener('click', () => {resultInput.value = new PowCommand(resultInput.value, 3).execute()});

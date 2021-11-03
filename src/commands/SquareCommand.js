@@ -8,7 +8,8 @@ class SquareCommand extends Calc {
     }
     
     execute() {
-        return Math.pow(this.num, 1 / this.pow);
+        if (this.pow === 2 || this.pow === 3) {document.querySelector('.archiv').value = this.pow + '√' + this.num}
+        return this.num ** (1 / this.pow);
     }
 }
 
