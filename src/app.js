@@ -1,4 +1,3 @@
-import {performExpByPower} from './functions';
 import AddCommand from './commands/AddCommand'
 import SubCommand from './commands/SubCommand'
 import MulCommand from './commands/MulCommand'
@@ -10,6 +9,7 @@ import OneDivByNumCommand from './commands/OneDivByNumCommand'
 import PercentCommand from './commands/PercentCommand'
 import LnCommand from './commands/LnCommand'
 import LogCommand from './commands/LogCommand'
+import ExpByPowerCommand from './commands/ExpByPowerCommand'
 
 let memory = new Memory('');
 const resultInput = document.querySelector('.result');
@@ -155,4 +155,4 @@ percentButton.addEventListener('click', () => {resultInput.value = new PercentCo
 
 lnButton.addEventListener('click', () => {resultInput.value = new LnCommand(resultInput.value).execute()});
 logButton.addEventListener('click', () => {resultInput.value = new LogCommand(resultInput.value).execute()});
-expByPowerButton.addEventListener('click', () => {resultInput.value = performExpByPower()});
+expByPowerButton.addEventListener('click', () => {resultInput.value = new ExpByPowerCommand(resultInput.value).execute()});
