@@ -152,7 +152,6 @@ cubeRootButton.addEventListener('click', () => {resultInput.value = new SquareCo
 squareButton.addEventListener('click', () => {resultInput.value = new PowCommand(resultInput.value, 2).execute()});
 cubeButton.addEventListener('click', () => {resultInput.value = new PowCommand(resultInput.value, 3).execute()});
 percentButton.addEventListener('click', () => {resultInput.value = new PercentCommand(resultInput.value).execute()});
-
 lnButton.addEventListener('click', () => {resultInput.value = new LnCommand(resultInput.value).execute()});
 logButton.addEventListener('click', () => {resultInput.value = new LogCommand(resultInput.value).execute()});
 expByPowerButton.addEventListener('click', () => {resultInput.value = new ExpByPowerCommand(resultInput.value).execute()});
