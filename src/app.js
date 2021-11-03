@@ -1,57 +1,20 @@
-import {setSimpleMathOptions, getNumberInPower, getOneDevidedByNumber, getNumberInRoot, performNumByPower,
+import {getOneDevidedByNumber, performNumByPower,
         performPercentOperation, performNaturalLog, performDecimalLog, performExpByPower,
-        performNumRoot, performClearOperation, performBackspaceOperation, setButtonsDisable} from './functions';
-import AddCommand from './classes/AddCommand'
-import SubCommand from './classes/SubCommand'
-import MulCommand from './classes/MulCommand'
-import DivCommand from './classes/DivCommand'
-import PowCommand from './classes/PowCommand'
-import SquareCommand from './classes/SquareCommand'
-import Memory from './classes/Memory';
-
-
-
-function performEqualOperation() {
-    let res;
-    if (!archivInput.value) {return};
-    let sign = archivInput.value.slice(-1);
-    let firstNumber = Number(archivInput.value.slice(0, -1));
-    let secondNumber = Number(resultInput.value);
-    switch (sign) {
-        case '+':
-            res = new AddCommand(firstNumber, secondNumber).execute();
-          break;
-        case '-':
-            res = new SubCommand(firstNumber, secondNumber).execute();
-          break;
-        case '*':
-            res = new MulCommand(firstNumber, secondNumber).execute();
-          break;
-        case '/':
-            res = new DivCommand(firstNumber, secondNumber).execute();
-          break;
-        case '^':
-            res = new PowCommand(firstNumber, secondNumber).execute();
-          break;
-        case '√':
-            res = new SquareCommand(firstNumber, secondNumber).execute();
-          break;
-        default:
-            return;
-    }
-    archivInput.value += secondNumber;
-    resultInput.value = res;
-}
+        performNumRoot, performClearOperation, performBackspaceOperation} from './functions';
+import AddCommand from './commands/AddCommand'
+import SubCommand from './commands/SubCommand'
+import MulCommand from './commands/MulCommand'
+import DivCommand from './commands/DivCommand'
+import PowCommand from './commands/PowCommand'
+import SquareCommand from './commands/SquareCommand'
+import Memory from './commands/Memory';
 
 let memory = new Memory('');
 const resultInput = document.querySelector('.result');
 const archivInput = document.querySelector('.archiv');
 const numberButtons = document.querySelectorAll('.btn-numb');
 const clearButton = document.querySelector('#clearButton');
-const addButton = document.querySelector('#addButton');
-const subButton = document.querySelector('#subButton');
-const mulButton = document.querySelector('#mulButton');
-const divButton = document.querySelector('#divButton');
+const simpleOperationButtons = document.querySelectorAll('.simpleOperation');
 const equalButton = document.querySelector('#equalButton');
 const backspaceButton = document.querySelector('#backspaceButton');
 const squareButton = document.querySelector('#squareButton');
@@ -67,6 +30,7 @@ const lnButton = document.querySelector('#lnButton');
 const logButton = document.querySelector('#logButton');
 const memoryButtons = document.querySelectorAll('.memory');
 const numByPowerButton = document.querySelector('#numByPowerButton');
+const allButtons = document.querySelectorAll('.btn');
 
 for (let numberButton of numberButtons) {
   numberButton.addEventListener('click', (e) => {
@@ -97,23 +61,73 @@ for (let memoryButton of memoryButtons) {
   });
 }
 
-document.querySelector('.buttons').addEventListener('click', () => setButtonsDisable());
+for (let simpleOperationButton of simpleOperationButtons) {
+  simpleOperationButton.addEventListener('click', () => {
+    let actualNumber = resultInput.value;
+    archivInput.value = actualNumber + simpleOperationButton.value;
+    resultInput.value = '';
+    resultInput.placeholder = '';
+  })
+}
+ 
+document.querySelector('.buttons').addEventListener('click', () => {
+  if (resultInput.value === 'division by zero') {
+    for (let button of allButtons) {
+      if(button.id !== 'clearButton') {button.setAttribute("disabled", true)}
+    }
+  } else {
+    return;
+  }
+});
 lnButton.addEventListener('click', () => {resultInput.value = performNaturalLog()});
 logButton.addEventListener('click', () => {resultInput.value = performDecimalLog()});
 expByPowerButton.addEventListener('click', () => {resultInput.value = performExpByPower()});
-squareRootButton.addEventListener('click', () => {resultInput.value = getNumberInRoot(2)});
-cubeRootButton.addEventListener('click', () => {resultInput.value = getNumberInRoot(3)});
 numRootButton.addEventListener('click', performNumRoot);
 numByPowerButton.addEventListener('click', performNumByPower);
 percentButton.addEventListener('click', () => {resultInput.value = performPercentOperation()});
-squareButton.addEventListener('click', () => {resultInput.value = getNumberInPower(2)});
-cubeButton.addEventListener('click', () => {resultInput.value = getNumberInPower(3)});
 oneDivByNumberButton.addEventListener('click', () => {resultInput.value = getOneDevidedByNumber()});
 expButton.addEventListener('click', () => {resultInput.value = Math.exp(1)});
-clearButton.addEventListener('click', performClearOperation);
+clearButton.addEventListener('click', () => {
+  resultInput.value = '';
+  archivInput.value = '';
+  resultInput.placeholder = '0';
+  for (let button of allButtons) {
+      button.removeAttribute("disabled");
+  }
+});
 backspaceButton.addEventListener('click', performBackspaceOperation);
-addButton.addEventListener('click', (e) => {setSimpleMathOptions(e.target.value)});
-subButton.addEventListener('click', (e) => {setSimpleMathOptions(e.target.value)});
-mulButton.addEventListener('click', (e) => {setSimpleMathOptions(e.currentTarget.value)});
-divButton.addEventListener('click', (e) => {setSimpleMathOptions(e.currentTarget.value)});
-equalButton.addEventListener('click', performEqualOperation);
+squareRootButton.addEventListener('click', () => {resultInput.value = new SquareCommand(resultInput.value, 2).execute()});
+cubeRootButton.addEventListener('click', () => {resultInput.value = new SquareCommand(resultInput.value, 3).execute()});
+squareButton.addEventListener('click', () => {resultInput.value = new PowCommand(resultInput.value, 2).execute()});
+cubeButton.addEventListener('click', () => {resultInput.value = new PowCommand(resultInput.value, 3).execute()});
+equalButton.addEventListener('click', () => {
+  let res;
+  if (!archivInput.value) {return};
+  let sign = archivInput.value.slice(-1);
+  let firstNumber = Number(archivInput.value.slice(0, -1));
+  let secondNumber = Number(resultInput.value);
+  switch (sign) {
+      case '+':
+          res = new AddCommand(firstNumber, secondNumber).execute();
+        break;
+      case '-':
+          res = new SubCommand(firstNumber, secondNumber).execute();
+        break;
+      case '*':
+          res = new MulCommand(firstNumber, secondNumber).execute();
+        break;
+      case '/':
+          res = new DivCommand(firstNumber, secondNumber).execute();
+        break;
+      case '^':
+          res = new PowCommand(firstNumber, secondNumber).execute();
+        break;
+      case '√':
+          res = new SquareCommand(firstNumber, secondNumber).execute();
+        break;
+      default:
+          return;
+  }
+  archivInput.value += secondNumber;
+  resultInput.value = res;
+});

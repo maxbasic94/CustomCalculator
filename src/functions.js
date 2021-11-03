@@ -1,16 +1,3 @@
-function setSimpleMathOptions(operation) {
-    let actualNumber = resultInput.value;
-    archivInput.value = actualNumber + operation;
-    resultInput.value = '';
-    resultInput.placeholder = '';
-}
-
-function getNumberInPower(power) {
-    let actualNumber = Number(resultInput.value);
-    archivInput.value = actualNumber + '^' + power;
-    return Math.pow(actualNumber, power);
-}
-
 function getOneDevidedByNumber() {
     if (!resultInput.value) {return ''};
     let actualNumber = Number(resultInput.value);
@@ -20,17 +7,6 @@ function getOneDevidedByNumber() {
     } else {
         return Number(1 / actualNumber);
     }
-}
-
-function getNumberInRoot(power) {
-    if (!resultInput.value) {return ''}; 
-    let actualNumber = Number(resultInput.value);
-    if (power <= 2) {
-        archivInput.value = '\u221A' + actualNumber;
-    } else {
-        archivInput.value = power + '\u221A' + actualNumber;
-    }
-    return Math.pow(actualNumber, 1 / power);
 }
 
 function performNumByPower() {
@@ -85,28 +61,9 @@ function performNumRoot() {
     resultInput.value = '';
 }
 
-function performClearOperation() {
-    resultInput.value = '';
-    archivInput.value = '';
-    resultInput.placeholder = '0';
-    for (let button of allButtons) {
-        button.removeAttribute("disabled");
-    }
-}
-
 function performBackspaceOperation() {
     let numberWithoutLastSymbol = resultInput.value.slice(0, -1);
     resultInput.value = numberWithoutLastSymbol;
-}
-
-function setButtonsDisable() {
-    if (resultInput.value === 'division by zero') {
-        for (let button of allButtons) {
-        if(button.id !== 'clearButton') {button.setAttribute("disabled", true)}
-        }
-    } else {
-        return;
-    }
 }
 
 const resultInput = document.querySelector('.result');
@@ -114,7 +71,7 @@ const archivInput = document.querySelector('.archiv');
 const allButtons = document.querySelectorAll('.btn');
 
 module.exports = {
-    setSimpleMathOptions, getNumberInPower, getOneDevidedByNumber, getNumberInRoot, performNumByPower,
+    getOneDevidedByNumber, performNumByPower,
     performPercentOperation, performNaturalLog, performDecimalLog, performExpByPower,
-    performNumRoot, performClearOperation, performBackspaceOperation, setButtonsDisable
+    performNumRoot, performClearOperation, performBackspaceOperation
 };
