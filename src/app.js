@@ -161,7 +161,7 @@ equalButton.addEventListener('click', () => {
     let firstNumber = Number(archivInput.value.slice(0, -1));
     let secondNumber = Number(resultInput.value);
     let res = switchOperation(sign, firstNumber, secondNumber);
-    archivInput.value += secondNumber;
+    if (!(sign === '^' && (secondNumber === 2 || secondNumber === 3))) {archivInput.value += secondNumber}
     resultInput.value = res;
   } else {
     return;
