@@ -156,7 +156,6 @@ backspaceButton.addEventListener('click', () => {
 equalButton.addEventListener('click', () => {
   if (!archivInput.value) {return};
   let archivString = String(archivInput.value).match(/[\d\.\,]+/g)
-  console.log(archivString.length)
   if(archivString.length === 1) {
     let sign = archivInput.value.slice(-1);
     let firstNumber = Number(archivInput.value.slice(0, -1));
