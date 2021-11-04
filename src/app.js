@@ -11,6 +11,33 @@ import LnCommand from './commands/LnCommand'
 import LogCommand from './commands/LogCommand'
 import ExpByPowerCommand from './commands/ExpByPowerCommand'
 
+function switchOperation(sign, firstNumber, secondNumber) {
+  let res;
+  switch (sign) {
+    case '+':
+      res = new AddCommand(firstNumber, secondNumber).execute();
+      break;
+    case '-':
+      res = new SubCommand(firstNumber, secondNumber).execute();
+      break;
+    case '*':
+      res = new MulCommand(firstNumber, secondNumber).execute();
+      break;
+    case '/':
+      res = new DivCommand(firstNumber, secondNumber).execute();
+      break;
+    case '^':
+      res = new PowCommand(firstNumber, secondNumber).execute();
+      break;
+    case '√':
+      res = new SquareCommand(firstNumber, secondNumber).execute();
+      break;
+    default:
+        return;
+  }
+  return res;
+}
+
 let memory = new Memory('');
 const resultInput = document.querySelector('.result');
 const archivInput = document.querySelector('.archiv');
@@ -74,30 +101,8 @@ for (let simpleOperationButton of simpleOperationButtons) {
         let firstNumber = Number(archivString[0]);
         let secondNumber = Number(resultInput.value);
         let sign = archivInput.value.slice(-1);
-        switch (sign) {
-          case '+':
-            archivInput.value = new AddCommand(firstNumber, secondNumber).execute();
-            break;
-          case '-':
-            archivInput.value = new SubCommand(firstNumber, secondNumber).execute();
-            break;
-          case '*':
-            archivInput.value = new MulCommand(firstNumber, secondNumber).execute();
-            break;
-          case '/':
-            archivInput.value = new DivCommand(firstNumber, secondNumber).execute();
-            break;
-          case '^':
-            archivInput.value = new PowCommand(firstNumber, secondNumber).execute();
-            break;
-          case '√':
-            archivInput.value = new SquareCommand(firstNumber, secondNumber).execute();
-            break;
-          default:
-              return;
-        }
+        archivInput.value = switchOperation(sign, firstNumber, secondNumber) + simpleOperationButton.value;
         resultInput.value = '';
-        archivInput.value += simpleOperationButton.value;
       }
     } else {
       let actualNumber = resultInput.value;
@@ -149,35 +154,19 @@ backspaceButton.addEventListener('click', () => {
 });
 
 equalButton.addEventListener('click', () => {
-  let res;
   if (!archivInput.value) {return};
-  let sign = archivInput.value.slice(-1);
-  let firstNumber = Number(archivInput.value.slice(0, -1));
-  let secondNumber = Number(resultInput.value);
-  switch (sign) {
-      case '+':
-          res = new AddCommand(firstNumber, secondNumber).execute();
-        break;
-      case '-':
-          res = new SubCommand(firstNumber, secondNumber).execute();
-        break;
-      case '*':
-          res = new MulCommand(firstNumber, secondNumber).execute();
-        break;
-      case '/':
-          res = new DivCommand(firstNumber, secondNumber).execute();
-        break;
-      case '^':
-          res = new PowCommand(firstNumber, secondNumber).execute();
-        break;
-      case '√':
-          res = new SquareCommand(firstNumber, secondNumber).execute();
-        break;
-      default:
-          return;
+  let archivString = String(archivInput.value).match(/[\d\.\,]+/g)
+  console.log(archivString.length)
+  if(archivString.length === 1) {
+    let sign = archivInput.value.slice(-1);
+    let firstNumber = Number(archivInput.value.slice(0, -1));
+    let secondNumber = Number(resultInput.value);
+    let res = switchOperation(sign, firstNumber, secondNumber);
+    archivInput.value += secondNumber;
+    resultInput.value = res;
+  } else {
+    return;
   }
-  archivInput.value += secondNumber;
-  resultInput.value = res;
 });
 
 expButton.addEventListener('click', () => {resultInput.value = 2.718281828459045});
