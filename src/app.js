@@ -64,11 +64,47 @@ for (let memoryButton of memoryButtons) {
 }
 
 for (let simpleOperationButton of simpleOperationButtons) {
-  simpleOperationButton.addEventListener('click', () => {
-    let actualNumber = resultInput.value;
-    archivInput.value = actualNumber + simpleOperationButton.value;
-    resultInput.value = '';
-    resultInput.placeholder = '';
+  simpleOperationButton.addEventListener('click', (e) => {
+    if (archivInput.value) {
+      let archivString = String(archivInput.value).match(/[\d\.\,]+/g);
+      if(archivString.length > 1) {
+        archivInput.value = resultInput.value + '+';
+        resultInput.value = '';
+      } else {
+        let firstNumber = Number(archivString[0]);
+        let secondNumber = Number(resultInput.value);
+        let sign = archivInput.value.slice(-1);
+        switch (sign) {
+          case '+':
+            archivInput.value = new AddCommand(firstNumber, secondNumber).execute();
+            break;
+          case '-':
+            archivInput.value = new SubCommand(firstNumber, secondNumber).execute();
+            break;
+          case '*':
+            archivInput.value = new MulCommand(firstNumber, secondNumber).execute();
+            break;
+          case '/':
+            archivInput.value = new DivCommand(firstNumber, secondNumber).execute();
+            break;
+          case '^':
+            archivInput.value = new PowCommand(firstNumber, secondNumber).execute();
+            break;
+          case '√':
+            archivInput.value = new SquareCommand(firstNumber, secondNumber).execute();
+            break;
+          default:
+              return;
+        }
+        resultInput.value = '';
+        archivInput.value += simpleOperationButton.value;
+      }
+    } else {
+      let actualNumber = resultInput.value;
+      archivInput.value = actualNumber + simpleOperationButton.value;
+      resultInput.value = '';
+      resultInput.placeholder = '';
+    }
   })
 }
  
