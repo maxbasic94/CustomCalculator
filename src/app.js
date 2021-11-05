@@ -5,7 +5,7 @@ import PercentCommand from './commands/PercentCommand'
 import LnCommand from './commands/LnCommand'
 import LogCommand from './commands/LogCommand'
 import performMemoryOperation from './memory'
-import switchOperation from './commanDistribution'
+import switchOperation from './cmdDistribution'
 
 const resultInput = document.querySelector('.result');
 const archivInput = document.querySelector('.archiv');
