@@ -4,12 +4,11 @@ import MulCommand from './commands/MulCommand'
 import DivCommand from './commands/DivCommand'
 import PowCommand from './commands/PowCommand'
 import SquareCommand from './commands/SquareCommand'
-import Memory from './commands/Memory';
 import OneDivByNumCommand from './commands/OneDivByNumCommand'
 import PercentCommand from './commands/PercentCommand'
 import LnCommand from './commands/LnCommand'
 import LogCommand from './commands/LogCommand'
-import ExpByPowerCommand from './commands/ExpByPowerCommand'
+import performMemoryOperation from './memory'
 
 function switchOperation(sign, firstNumber, secondNumber) {
   let res;
@@ -38,15 +37,10 @@ function switchOperation(sign, firstNumber, secondNumber) {
   return res;
 }
 
-let memory = new Memory('');
 const resultInput = document.querySelector('.result');
 const archivInput = document.querySelector('.archiv');
-const numberButtons = document.querySelectorAll('.btn-numb');
-const simpleOperationButtons = document.querySelectorAll('.simpleOperation');
-const memoryButtons = document.querySelectorAll('.memory');
-const allButtons = document.querySelectorAll('.btn');
 
-for (let numberButton of numberButtons) {
+for (let numberButton of document.querySelectorAll('.btn-numb')) {
   numberButton.addEventListener('click', (e) => {
     let number = e.target.value;
     let result = resultInput;
@@ -54,28 +48,11 @@ for (let numberButton of numberButtons) {
   });
 }
 
-for (let memoryButton of memoryButtons) {
-  memoryButton.addEventListener('click', (e) => {
-    switch (e.target.id) {
-      case 'memoryClearButton':
-        memory.clear();
-        break;
-      case 'memoryAddButton':
-        memory.writeAdd(resultInput.value)
-        break;
-      case 'memoryDivButton':
-        memory.writeSub(resultInput.value)
-        break;
-      case 'memoryReadButton':
-        resultInput.value = memory.read()
-        break;
-      default:
-        break;
-    }
-  });
+for (let memoryButton of document.querySelectorAll('.memory')) {
+  memoryButton.addEventListener('click', () => performMemoryOperation(memoryButton))
 }
 
-for (let simpleOperationButton of simpleOperationButtons) {
+for (let simpleOperationButton of document.querySelectorAll('.simpleOperation')) {
   simpleOperationButton.addEventListener('click', (e) => {
     if (archivInput.value) {
       let archivString = String(archivInput.value).match(/[\d\.\,]+/g);
@@ -100,7 +77,7 @@ for (let simpleOperationButton of simpleOperationButtons) {
 
 document.querySelector('.buttons').addEventListener('click', () => {
   if (resultInput.value === 'division by zero') {
-    for (let button of allButtons) {
+    for (let button of document.querySelectorAll('.btn')) {
       if (button.id !== 'clearButton') { button.setAttribute("disabled", true) }
     }
   } else {
@@ -128,7 +105,7 @@ document.querySelector('#clearButton').addEventListener('click', () => {
   resultInput.value = '';
   archivInput.value = '';
   resultInput.placeholder = '0';
-  for (let button of allButtons) {
+  for (let button of document.querySelectorAll('.btn')) {
     button.removeAttribute("disabled");
   }
 });

@@ -12,7 +12,7 @@ class Memory {
     }
 
     writeAdd(value) {
-        this.memory += value
+        this.memory = Number(this.memory) + Number(value)
     }
 
     writeSub(value) {
