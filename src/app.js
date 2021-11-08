@@ -4,46 +4,43 @@ import OneDivByNumCommand from './commands/OneDivByNumCommand'
 import PercentCommand from './commands/PercentCommand'
 import LnCommand from './commands/LnCommand'
 import LogCommand from './commands/LogCommand'
+import ExpByPowerCommand from './commands/ExpByPowerCommand'
 import performMemoryOperation from './memory'
 import switchOperation from './cmdDistribution'
+
 
 const resultInput = document.querySelector('.result');
 const archivInput = document.querySelector('.archiv');
 
-for (let numberButton of document.querySelectorAll('.btn-numb')) {
-  numberButton.addEventListener('click', (e) => {
+document.querySelectorAll('.btn-numb').forEach((numberButton) => numberButton.addEventListener('click', (e) => {
     let number = e.target.value;
     let result = resultInput;
     result.value += number;
-  });
-}
-
-for (let memoryButton of document.querySelectorAll('.memory')) {
-  memoryButton.addEventListener('click', () => performMemoryOperation(memoryButton))
-}
-
-for (let simpleOperationButton of document.querySelectorAll('.simpleOperation')) {
-  simpleOperationButton.addEventListener('click', (e) => {
-    if (archivInput.value) {
-      let archivString = String(archivInput.value).match(/[\d\.\,]+/g);
-      if (archivString.length > 1) {
-        archivInput.value = resultInput.value + '+';
-        resultInput.value = '';
-      } else {
-        let firstNumber = Number(archivString[0]);
-        let secondNumber = Number(resultInput.value);
-        let sign = archivInput.value.slice(-1);
-        archivInput.value = switchOperation(sign, firstNumber, secondNumber) + simpleOperationButton.value;
-        resultInput.value = '';
-      }
-    } else {
-      let actualNumber = resultInput.value;
-      archivInput.value = actualNumber + simpleOperationButton.value;
-      resultInput.value = '';
-      resultInput.placeholder = '';
-    }
   })
-}
+)
+
+document.querySelectorAll('.memory').forEach((memoryButton) => memoryButton.addEventListener('click', () => performMemoryOperation(memoryButton)));
+
+document.querySelectorAll('.simpleOperation').forEach((simpleOperationButton) => simpleOperationButton.addEventListener('click', () => {
+  if (archivInput.value) {
+    let archivString = String(archivInput.value).match(/[\d\.\,]+/g);
+    if (archivString.length > 1) {
+      archivInput.value = resultInput.value + '+';
+      resultInput.value = '';
+    } else {
+      let firstNumber = Number(archivString[0]);
+      let secondNumber = Number(resultInput.value);
+      let sign = archivInput.value.slice(-1);
+      archivInput.value = switchOperation(sign, firstNumber, secondNumber) + simpleOperationButton.value;
+      resultInput.value = '';
+    }
+  } else {
+    let actualNumber = resultInput.value;
+    archivInput.value = actualNumber + simpleOperationButton.value;
+    resultInput.value = '';
+    resultInput.placeholder = '';
+  }
+}));
 
 document.querySelector('.buttons').addEventListener('click', () => {
   if (resultInput.value === 'division by zero') {
