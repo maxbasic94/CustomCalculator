@@ -93,7 +93,7 @@ document.querySelector('#equalButton').addEventListener('click', () => {
   }
 });
 
-document.querySelector('#expButton').addEventListener('click', () => { resultInput.value = 2.718281828459045 });
+document.querySelector('#expButton').addEventListener('click', () => { resultInput.value = switchOperation('e') });
 document.querySelector('#oneDivByNumberButton').addEventListener('click', () => { resultInput.value = switchOperation('1/x', 1, resultInput.value) });
 document.querySelector('#squareRootButton').addEventListener('click', () => { resultInput.value = switchOperation('√',resultInput.value, 2) });
 document.querySelector('#cubeRootButton').addEventListener('click', () => { resultInput.value = switchOperation('√',resultInput.value, 3) });
