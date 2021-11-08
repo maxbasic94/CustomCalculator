@@ -1,13 +1,5 @@
-import PowCommand from './commands/PowCommand'
-import SquareCommand from './commands/SquareCommand'
-import OneDivByNumCommand from './commands/OneDivByNumCommand'
-import PercentCommand from './commands/PercentCommand'
-import LnCommand from './commands/LnCommand'
-import LogCommand from './commands/LogCommand'
-import ExpByPowerCommand from './commands/ExpByPowerCommand'
 import performMemoryOperation from './memory'
 import switchOperation from './cmdDistribution'
-
 
 const resultInput = document.querySelector('.result');
 const archivInput = document.querySelector('.archiv');

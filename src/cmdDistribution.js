@@ -23,7 +23,7 @@ function switchOperation(sign, firstNumber, secondNumber) {
       case 'ln': return new LnCommand(firstNumber).execute();
       case 'log': return new LogCommand(firstNumber).execute();
       case 'exp': return new ExpByPowerCommand(firstNumber).execute();
-      default: return;
+      default: return 'operation in not found';
     }
 }
 
