@@ -23,7 +23,7 @@ document.querySelectorAll('.simpleOperation').forEach((simpleOperationButton) =>
       let firstNumber = Number(archivString[0]);
       let secondNumber = Number(resultInput.value);
       let sign = archivInput.value.slice(-1);
-      archivInput.value = switchOperation(sign, firstNumber, secondNumber) + simpleOperationButton.value;
+      archivInput.value = new (switchOperation(sign))(firstNumber, secondNumber).execute() + simpleOperationButton.value;
       resultInput.value = '';
     }
   } else {
@@ -85,7 +85,7 @@ document.querySelector('#equalButton').addEventListener('click', () => {
     let sign = archivInput.value.slice(-1);
     let firstNumber = Number(archivInput.value.slice(0, -1));
     let secondNumber = Number(resultInput.value);
-    let res = switchOperation(sign, firstNumber, secondNumber);
+    let res = new (switchOperation(sign))(firstNumber, secondNumber).execute();
     if (!(sign === '^' && (secondNumber === 2 || secondNumber === 3))) { archivInput.value += secondNumber }
     resultInput.value = res;
   } else {
@@ -93,13 +93,13 @@ document.querySelector('#equalButton').addEventListener('click', () => {
   }
 });
 
-document.querySelector('#expButton').addEventListener('click', () => { resultInput.value = switchOperation('e') });
-document.querySelector('#oneDivByNumberButton').addEventListener('click', () => { resultInput.value = switchOperation('1/x', 1, resultInput.value) });
-document.querySelector('#squareRootButton').addEventListener('click', () => { resultInput.value = switchOperation('√',resultInput.value, 2) });
-document.querySelector('#cubeRootButton').addEventListener('click', () => { resultInput.value = switchOperation('√',resultInput.value, 3) });
-document.querySelector('#squareButton').addEventListener('click', () => { resultInput.value = switchOperation('^',resultInput.value, 2) });
-document.querySelector('#cubeButton').addEventListener('click', () => { resultInput.value = switchOperation('^',resultInput.value, 3) });
-document.querySelector('#percentButton').addEventListener('click', () => { resultInput.value = switchOperation('%', 100, resultInput.value) });
-document.querySelector('#lnButton').addEventListener('click', () => { resultInput.value = switchOperation('ln', resultInput.value) });
-document.querySelector('#logButton').addEventListener('click', () => { resultInput.value = switchOperation('log', resultInput.value) });
-document.querySelector('#expByPowerButton').addEventListener('click', () => { resultInput.value = switchOperation('exp', resultInput.value) });
+document.querySelector('#expButton').addEventListener('click', () => { resultInput.value = new (switchOperation('e'))().execute() });
+document.querySelector('#oneDivByNumberButton').addEventListener('click', () => { resultInput.value = new (switchOperation('1/x'))(1, resultInput.value).execute() });
+document.querySelector('#squareRootButton').addEventListener('click', () => { resultInput.value = new (switchOperation('√'))(resultInput.value, 2).execute() });
+document.querySelector('#cubeRootButton').addEventListener('click', () => { resultInput.value =  new (switchOperation('√'))(resultInput.value, 3).execute() });
+document.querySelector('#squareButton').addEventListener('click', () => { resultInput.value = new (switchOperation('^'))(resultInput.value, 2).execute() });
+document.querySelector('#cubeButton').addEventListener('click', () => { resultInput.value = new (switchOperation('^'))(resultInput.value, 3).execute() });
+document.querySelector('#percentButton').addEventListener('click', () => { resultInput.value = new (switchOperation('%'))(100, resultInput.value).execute() });
+document.querySelector('#lnButton').addEventListener('click', () => { resultInput.value = new (switchOperation('ln'))(resultInput.value).execute() });
+document.querySelector('#logButton').addEventListener('click', () => { resultInput.value = new (switchOperation('log'))(resultInput.value).execute() });
+document.querySelector('#expByPowerButton').addEventListener('click', () => { resultInput.value = new (switchOperation('exp'))(resultInput.value).execute() });

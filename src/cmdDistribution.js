@@ -9,21 +9,22 @@ import PercentCommand from './commands/PercentCommand'
 import LnCommand from './commands/LnCommand'
 import LogCommand from './commands/LogCommand'
 import ExpByPowerCommand from './commands/ExpByPowerCommand'
+import ExpCommand from './commands/ExpCommand copy'
 
-function switchOperation(sign, firstNumber, secondNumber) {
+function switchOperation(sign) {
     switch (sign) {
-      case '+': return new AddCommand(firstNumber, secondNumber).execute();
-      case '-': return new SubCommand(firstNumber, secondNumber).execute();
-      case '*': return new MulCommand(firstNumber, secondNumber).execute();
-      case '/': return new DivCommand(firstNumber, secondNumber).execute();
-      case '^': return new PowCommand(firstNumber, secondNumber).execute();
-      case '√': return new SquareCommand(firstNumber, secondNumber).execute();
-      case '1/x': return new OneDivByNumCommand(firstNumber, secondNumber).execute();
-      case '%': return new PercentCommand(firstNumber, secondNumber).execute();
-      case 'ln': return new LnCommand(firstNumber).execute();
-      case 'log': return new LogCommand(firstNumber).execute();
-      case 'exp': return new ExpByPowerCommand(firstNumber).execute();
-      case 'e': return 2.718281828459045;
+      case '+': return AddCommand;
+      case '-': return SubCommand;
+      case '*': return MulCommand;
+      case '/': return DivCommand;
+      case '^': return PowCommand;
+      case '√': return SquareCommand;
+      case '1/x': return OneDivByNumCommand;
+      case '%': return PercentCommand;
+      case 'ln': return LnCommand;
+      case 'log': return LogCommand;
+      case 'exp': return ExpByPowerCommand;
+      case 'e': return ExpCommand;
       default: return 'operation in not found';
     }
 }
