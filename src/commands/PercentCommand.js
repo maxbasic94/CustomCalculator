@@ -1,15 +1,16 @@
 import Calc from "./Calc";
 
 class PercentCommand extends Calc {
-    constructor(actualNumber) {
+    constructor(leftNumber, rightNumber) {
         super();
-        this.actualNumber = Number(actualNumber);
+        this.leftNumber = leftNumber
+        this.rightNumber = Number(rightNumber);
     }
     
     execute() {
-        document.querySelector('.archiv').value =  this.actualNumber + '%';
-        if (!this.actualNumber) {return ''};
-        return this.actualNumber / 100;
+        document.querySelector('.archiv').value =  this.rightNumber + '%';
+        if (!this.rightNumber) {return ''};
+        return this.rightNumber / this.leftNumber;
     }
 }
 

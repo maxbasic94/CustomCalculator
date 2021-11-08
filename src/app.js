@@ -102,12 +102,12 @@ document.querySelector('#equalButton').addEventListener('click', () => {
 });
 
 document.querySelector('#expButton').addEventListener('click', () => { resultInput.value = 2.718281828459045 });
-document.querySelector('#oneDivByNumberButton').addEventListener('click', () => { resultInput.value = new OneDivByNumCommand(resultInput.value).execute() });
-document.querySelector('#squareRootButton').addEventListener('click', () => { resultInput.value = new SquareCommand(resultInput.value, 2).execute() });
-document.querySelector('#cubeRootButton').addEventListener('click', () => { resultInput.value = new SquareCommand(resultInput.value, 3).execute() });
-document.querySelector('#squareButton').addEventListener('click', () => { resultInput.value = new PowCommand(resultInput.value, 2).execute() });
-document.querySelector('#cubeButton').addEventListener('click', () => { resultInput.value = new PowCommand(resultInput.value, 3).execute() });
-document.querySelector('#percentButton').addEventListener('click', () => { resultInput.value = new PercentCommand(resultInput.value).execute() });
-document.querySelector('#lnButton').addEventListener('click', () => { resultInput.value = new LnCommand(resultInput.value).execute() });
-document.querySelector('#logButton').addEventListener('click', () => { resultInput.value = new LogCommand(resultInput.value).execute() });
-document.querySelector('#expByPowerButton').addEventListener('click', () => { resultInput.value = new ExpByPowerCommand(resultInput.value).execute() });
+document.querySelector('#oneDivByNumberButton').addEventListener('click', () => { resultInput.value = switchOperation('1/x', 1, resultInput.value) });
+document.querySelector('#squareRootButton').addEventListener('click', () => { resultInput.value = switchOperation('√',resultInput.value, 2) });
+document.querySelector('#cubeRootButton').addEventListener('click', () => { resultInput.value = switchOperation('√',resultInput.value, 3) });
+document.querySelector('#squareButton').addEventListener('click', () => { resultInput.value = switchOperation('^',resultInput.value, 2) });
+document.querySelector('#cubeButton').addEventListener('click', () => { resultInput.value = switchOperation('^',resultInput.value, 3) });
+document.querySelector('#percentButton').addEventListener('click', () => { resultInput.value = switchOperation('%', 100, resultInput.value) });
+document.querySelector('#lnButton').addEventListener('click', () => { resultInput.value = switchOperation('ln', resultInput.value) });
+document.querySelector('#logButton').addEventListener('click', () => { resultInput.value = switchOperation('log', resultInput.value) });
+document.querySelector('#expByPowerButton').addEventListener('click', () => { resultInput.value = switchOperation('exp', resultInput.value) });
