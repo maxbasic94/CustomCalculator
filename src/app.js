@@ -79,7 +79,11 @@ document.querySelector('#clearButton').addEventListener('click', () => {
 
 document.querySelector('#backspaceButton').addEventListener('click', () => {
   let numberWithoutLastSymbol = resultInput.value.slice(0, -1);
-  resultInput.value = numberWithoutLastSymbol;
+  if (numberWithoutLastSymbol === '') {
+    resultInput.value = 0;
+  } else {
+    resultInput.value = numberWithoutLastSymbol;
+  }
 });
 
 document.querySelector('#equalButton').addEventListener('click', () => {
