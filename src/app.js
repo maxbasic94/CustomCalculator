@@ -16,7 +16,7 @@ document.querySelector('.buttons').addEventListener('click', () => {
 });
 
 document.querySelectorAll('.btn').forEach((btn) => btn.addEventListener('click', (e) => {
-  if(e.currentTarget.classList.contains('btn-numb')) {calc.addNumber(e.target.value)};
+  if(e.currentTarget.classList.contains('btn-numb')) calc.addNumber(e.target.value);
 
   if(e.currentTarget.classList.contains('simpleOperation')) {
     if (archivInput.value) {
