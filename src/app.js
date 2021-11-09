@@ -64,28 +64,28 @@ document.querySelectorAll('.btn').forEach((btn) => btn.addEventListener('click',
     case 'subButton':
     case 'addButton':
       if (archivInput.value) {
-        let archivString = String(archivInput.value).match(/[\d\.\,]+/g);
+        const archivString = String(archivInput.value).match(/[\d\.\,]+/g);
         if (archivString.length > 1) {
           calc.render('', resultInput.value + e.currentTarget.value);
         } else {
-          let firstNumber = Number(archivString[0]);
-          let secondNumber = Number(resultInput.value);
-          let sign = archivInput.value.slice(-1);
+          const firstNumber = Number(archivString[0]);
+          const secondNumber = Number(resultInput.value);
+          const sign = archivInput.value.slice(-1);
           calc.render('', new (switchOperation(sign))(firstNumber, secondNumber).execute() + e.currentTarget.value);
         }
       } else {
-        let actualNumber = resultInput.value;
+        const actualNumber = resultInput.value;
         calc.render('', actualNumber + e.currentTarget.value, '');
       }
       break;
     case 'numRootButton':
       if (!resultInput.value) { return };
-      let actualRootNumber = resultInput.value;
+      const actualRootNumber = resultInput.value;
       calc.render('', actualRootNumber + '\u221A', '');
       break;
     case 'numByPowerButton':
       if (!resultInput.value) { return };
-      let actualPowerNumber = resultInput.value;
+      const actualPowerNumber = resultInput.value;
       calc.render('', actualPowerNumber + '^', '');
       break;
     case 'clearButton':
@@ -95,7 +95,7 @@ document.querySelectorAll('.btn').forEach((btn) => btn.addEventListener('click',
       }) 
       break;
     case 'backspaceButton':
-      let numberWithoutLastSymbol = resultInput.value.slice(0, -1);
+      const numberWithoutLastSymbol = resultInput.value.slice(0, -1);
       if (numberWithoutLastSymbol === '') {
         calc.render(0);
       } else {
@@ -104,12 +104,12 @@ document.querySelectorAll('.btn').forEach((btn) => btn.addEventListener('click',
       break;
     case 'equalButton':
       if (!archivInput.value) { return };
-      let archivString = String(archivInput.value).match(/[\d\.\,]+/g)
+      const archivString = String(archivInput.value).match(/[\d\.\,]+/g)
       if (archivString.length === 1) {
-        let sign = archivInput.value.slice(-1);
-        let firstNumber = Number(archivInput.value.slice(0, -1));
-        let secondNumber = Number(resultInput.value);
-        let res = new (switchOperation(sign))(firstNumber, secondNumber).execute();
+        const sign = archivInput.value.slice(-1);
+        const firstNumber = Number(archivInput.value.slice(0, -1));
+        const secondNumber = Number(resultInput.value);
+        const res = new (switchOperation(sign))(firstNumber, secondNumber).execute();
         if (!(sign === '^' && (secondNumber === 2 || secondNumber === 3))) { archivInput.value += secondNumber }
         calc.render(res);
       } else {
