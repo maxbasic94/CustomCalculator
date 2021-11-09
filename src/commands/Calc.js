@@ -17,6 +17,13 @@ class Calc {
     addNumber(number) {
         this.input.value += number;
     }
+
+    getSignAndValues(){
+        const sign = this.archiv.value.slice(-1);
+        const firstNumber = Number(this.archiv.value.slice(0, -1));
+        const secondNumber = Number(this.input.value);
+        return [firstNumber, sign, secondNumber];
+    }
 }
 
 export default Calc;

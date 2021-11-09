@@ -24,9 +24,7 @@ document.querySelectorAll('.btn').forEach((btn) => btn.addEventListener('click',
       if (archivString.length > 1) {
         calc.render('', resultInput.value + e.currentTarget.value);
       } else {
-        const firstNumber = Number(archivString[0]);
-        const secondNumber = Number(resultInput.value);
-        const sign = archivInput.value.slice(-1);
+        const [firstNumber, sign, secondNumber] = calc.getSignAndValues();
         calc.render('', new (switchOperation(sign))(firstNumber, secondNumber).execute() + e.currentTarget.value);
       }
     } else {
@@ -68,9 +66,7 @@ document.querySelectorAll('.btn').forEach((btn) => btn.addEventListener('click',
     if (!archivInput.value) return;
     const archivString = String(archivInput.value).match(/[\d\.\,]+/g);
     if (archivString.length === 1) {
-      const sign = archivInput.value.slice(-1);
-      const firstNumber = Number(archivInput.value.slice(0, -1));
-      const secondNumber = Number(resultInput.value);
+      const [firstNumber, sign, secondNumber] = calc.getSignAndValues();
       const res = new (switchOperation(sign))(firstNumber, secondNumber).execute();
       if (!(sign === '^' && (secondNumber === 2 || secondNumber === 3))) { calc.render(undefined, secondNumber) }
       calc.render(res);
