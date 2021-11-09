@@ -23,12 +23,12 @@ document.querySelectorAll('.btn').forEach((btn) => btn.addEventListener('click',
       const archivString = String(archivInput.value).match(/[\d\.\,]+/g);
       if (archivString.length > 1) {
         calc.render('', resultInput.value + e.currentTarget.value);
-        } else {
-          const firstNumber = Number(archivString[0]);
-          const secondNumber = Number(resultInput.value);
-          const sign = archivInput.value.slice(-1);
-          calc.render('', new (switchOperation(sign))(firstNumber, secondNumber).execute() + e.currentTarget.value);
-        }
+      } else {
+        const firstNumber = Number(archivString[0]);
+        const secondNumber = Number(resultInput.value);
+        const sign = archivInput.value.slice(-1);
+        calc.render('', new (switchOperation(sign))(firstNumber, secondNumber).execute() + e.currentTarget.value);
+      }
     } else {
     const actualNumber = resultInput.value;
     calc.render('', actualNumber + e.currentTarget.value, '');
