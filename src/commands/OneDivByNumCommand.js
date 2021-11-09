@@ -1,14 +1,15 @@
 import Calc from "./Calc";
+import { calc } from "../app";
 
 class OneDivByNumCommand extends Calc {
-    constructor(leftNumber, rightNumber) {
+    constructor(rightNumber) {
         super();
-        this.leftNumber = Number(leftNumber);
+        this.leftNumber = 1;
         this.rightNumber = Number(rightNumber);
     }
     
     execute() {
-        document.querySelector('.archiv').value = this.leftNumber + this.rightNumber;
+        calc.render( undefined, `${this.leftNumber}/${this.rightNumber}`)
         if (this.rightNumber === 0) {
             return 'division by zero';
         } else {

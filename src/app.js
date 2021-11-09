@@ -16,116 +16,75 @@ document.querySelector('.buttons').addEventListener('click', () => {
 });
 
 document.querySelectorAll('.btn').forEach((btn) => btn.addEventListener('click', (e) => {
-  switch (e.currentTarget.id) {
-    case 'expButton':
-      calc.render(new (switchOperation(e.currentTarget.value))().execute());
-      break;
-    case 'oneDivByNumberButton':
-      calc.render(new (switchOperation(e.currentTarget.value))(1, resultInput.value).execute(), `1/${resultInput.value}`);
-      break;
-    case 'squareRootButton':
-      calc.render(new (switchOperation(e.currentTarget.value))(resultInput.value, 2).execute());
-      break;
-    case 'cubeRootButton':
-      calc.render(new (switchOperation(e.currentTarget.value))(resultInput.value, 3).execute());
-      break;
-    case 'squareButton':
-      calc.render(new (switchOperation(e.currentTarget.value))(resultInput.value, 2).execute());
-      break;
-    case 'cubeButton':
-      calc.render(new (switchOperation(e.currentTarget.value))(resultInput.value, 3).execute());
-      break;
-    case 'percentButton':
-      calc.render(new (switchOperation(e.currentTarget.value))(100, resultInput.value).execute());
-      break;
-    case 'lnButton':
-      calc.render(new (switchOperation(e.currentTarget.value))(resultInput.value).execute());
-      break;
-    case 'logButton':
-      calc.render(new (switchOperation(e.currentTarget.value))(resultInput.value).execute());
-      break;
-    case 'expByPowerButton':
-      calc.render(new (switchOperation(e.currentTarget.value))(resultInput.value).execute());
-      break;
-    case 'number0':
-    case 'number1':
-    case 'number2':
-    case 'number3':
-    case 'number4':
-    case 'number5':
-    case 'number6':
-    case 'number7':
-    case 'number8':
-    case 'number9':
-      calc.addNumber(e.target.value);
-      break;
-    case 'divButton':
-    case 'mulButton':
-    case 'subButton':
-    case 'addButton':
-      if (archivInput.value) {
-        const archivString = String(archivInput.value).match(/[\d\.\,]+/g);
-        if (archivString.length > 1) {
-          calc.render('', resultInput.value + e.currentTarget.value);
+  if(e.currentTarget.classList.contains('btn-numb')) {calc.addNumber(e.target.value)};
+
+  if(e.currentTarget.classList.contains('simpleOperation')) {
+    if (archivInput.value) {
+      const archivString = String(archivInput.value).match(/[\d\.\,]+/g);
+      if (archivString.length > 1) {
+        calc.render('', resultInput.value + e.currentTarget.value);
         } else {
           const firstNumber = Number(archivString[0]);
           const secondNumber = Number(resultInput.value);
           const sign = archivInput.value.slice(-1);
           calc.render('', new (switchOperation(sign))(firstNumber, secondNumber).execute() + e.currentTarget.value);
         }
-      } else {
-        const actualNumber = resultInput.value;
-        calc.render('', actualNumber + e.currentTarget.value, '');
-      }
-      break;
-    case 'numRootButton':
-      if (!resultInput.value) return;
-      calc.render('', resultInput.value + '\u221A', '');
-      break;
-    case 'numByPowerButton':
-      if (!resultInput.value) return;
-      calc.render('', resultInput.value + '^', '');
-      break;
-    case 'clearButton':
-      calc.render('', '', '0');
-      document.querySelectorAll('.btn').forEach((button) => {
-        button.removeAttribute("disabled");
-      }) 
-      break;
-    case 'backspaceButton':
-      if (resultInput.value.slice(0, -1) === '') {
-        calc.render(0);
-      } else {
-        calc.render(resultInput.value.slice(0, -1));
-      }
-      break;
-    case 'equalButton':
-      if (!archivInput.value) return;
-      const archivString = String(archivInput.value).match(/[\d\.\,]+/g);
-      if (archivString.length === 1) {
-        const sign = archivInput.value.slice(-1);
-        const firstNumber = Number(archivInput.value.slice(0, -1));
-        const secondNumber = Number(resultInput.value);
-        const res = new (switchOperation(sign))(firstNumber, secondNumber).execute();
-        if (!(sign === '^' && (secondNumber === 2 || secondNumber === 3))) { archivInput.value += secondNumber }
-        calc.render(res);
-      } else {
-        return;
-      }
-      break;
-    case 'memoryClearButton':
-      memory.clear();
-      break;
-    case 'memoryAddButton':
-      memory.writeAdd(resultInput.value)
-      break;
-    case 'memoryDivButton':
-      memory.writeSub(resultInput.value)
-      break;
-    case 'memoryReadButton':
-      calc.render(memory.read())
-      break;
-    default:
-      break;
+    } else {
+    const actualNumber = resultInput.value;
+    calc.render('', actualNumber + e.currentTarget.value, '');
+    }
+  }
+
+  if(e.currentTarget.classList.contains('root-pow')) {
+    if (!resultInput.value) return;
+    calc.render('', resultInput.value + `${e.currentTarget.value}`, '');
+  }
+
+  if(e.currentTarget.classList.contains('hardOper')) {
+    if (e.currentTarget.hasAttribute('pow')) {
+      const pow = e.currentTarget.getAttribute('pow');
+      calc.render(new (switchOperation(e.currentTarget.value))(resultInput.value, pow).execute());
+    } else {
+      calc.render(new (switchOperation(e.currentTarget.value))(resultInput.value).execute());
+    }
+  }
+
+  if(e.currentTarget.classList.contains('clear')) {
+    calc.render('', '', '0');
+    document.querySelectorAll('.btn').forEach((button) => {
+      button.removeAttribute("disabled");
+    }) 
+  }
+
+  if(e.currentTarget.classList.contains('backspace')) {
+    if (resultInput.value.slice(0, -1) === '') {
+      calc.render(0);
+    } else {
+      calc.render(resultInput.value.slice(0, -1));
+    }
+  }
+
+  if(e.currentTarget.classList.contains('equal')) {
+    if (!archivInput.value) return;
+    const archivString = String(archivInput.value).match(/[\d\.\,]+/g);
+    if (archivString.length === 1) {
+      const sign = archivInput.value.slice(-1);
+      const firstNumber = Number(archivInput.value.slice(0, -1));
+      const secondNumber = Number(resultInput.value);
+      const res = new (switchOperation(sign))(firstNumber, secondNumber).execute();
+      if (!(sign === '^' && (secondNumber === 2 || secondNumber === 3))) { archivInput.value += secondNumber }
+      calc.render(res);
+    } else {
+      return;
+    }
+  }
+
+  if(e.currentTarget.classList.contains('memory')) {
+    if(e.currentTarget.id === 'memoryClearButton') memory.clear();
+    if(e.currentTarget.id === 'memoryAddButton') memory.writeAdd(resultInput.value);
+    if(e.currentTarget.id === 'memoryDivButton') memory.writeSub(resultInput.value);
+    if(e.currentTarget.id === 'memoryReadButton') calc.render(memory.read());
   }
 }));
+
+export {calc};
