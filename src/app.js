@@ -7,14 +7,12 @@ const archivInput = document.querySelector('.archiv');
 const calc = new Calc(resultInput, archivInput);
 const memory = new Memory('');
 
-document.querySelector('.buttons').addEventListener('click', (e) => {
+document.querySelector('.buttons').addEventListener('click', () => {
   if (resultInput.value === 'division by zero') {
-    for (let button of document.querySelectorAll('.btn')) {
+    document.querySelectorAll('.btn').forEach((button) => {
       if (button.id !== 'clearButton') { button.setAttribute("disabled", true) }
-    }
-  } else {
-    return;
-  }
+    }) 
+  } 
 });
 
 document.querySelectorAll('.btn').forEach((btn) => btn.addEventListener('click', (e) => {
@@ -92,9 +90,9 @@ document.querySelectorAll('.btn').forEach((btn) => btn.addEventListener('click',
       break;
     case 'clearButton':
       calc.render('', '', '0');
-      for (let button of document.querySelectorAll('.btn')) {
+      document.querySelectorAll('.btn').forEach((button) => {
         button.removeAttribute("disabled");
-      }
+      }) 
       break;
     case 'backspaceButton':
       let numberWithoutLastSymbol = resultInput.value.slice(0, -1);
