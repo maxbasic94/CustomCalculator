@@ -44,8 +44,7 @@ Basic operations:
     * style.css - contains style sheets. 
     * bundle.js - contains JavaScript code.  
 2. Folder "src" contains folder "commands" and some files: 
-    * folder "classes" - contains files with classes.
+    * folder "commands" - contains files with classes.
     * app.js - contains main JavaScrip code.
     * cmdDistribution.js - contains code which distributions command from simple operations buttons.
-    * memory.js - contains javaScrip code which works rith memory buttons.
     * commands.test.js - contains unit tests for classes.
