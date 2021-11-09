@@ -79,14 +79,12 @@ document.querySelectorAll('.btn').forEach((btn) => btn.addEventListener('click',
       }
       break;
     case 'numRootButton':
-      if (!resultInput.value) { return };
-      const actualRootNumber = resultInput.value;
-      calc.render('', actualRootNumber + '\u221A', '');
+      if (!resultInput.value) return;
+      calc.render('', resultInput.value + '\u221A', '');
       break;
     case 'numByPowerButton':
-      if (!resultInput.value) { return };
-      const actualPowerNumber = resultInput.value;
-      calc.render('', actualPowerNumber + '^', '');
+      if (!resultInput.value) return;
+      calc.render('', resultInput.value + '^', '');
       break;
     case 'clearButton':
       calc.render('', '', '0');
@@ -95,16 +93,15 @@ document.querySelectorAll('.btn').forEach((btn) => btn.addEventListener('click',
       }) 
       break;
     case 'backspaceButton':
-      const numberWithoutLastSymbol = resultInput.value.slice(0, -1);
-      if (numberWithoutLastSymbol === '') {
+      if (resultInput.value.slice(0, -1) === '') {
         calc.render(0);
       } else {
-        calc.render(numberWithoutLastSymbol);
+        calc.render(resultInput.value.slice(0, -1));
       }
       break;
     case 'equalButton':
-      if (!archivInput.value) { return };
-      const archivString = String(archivInput.value).match(/[\d\.\,]+/g)
+      if (!archivInput.value) return;
+      const archivString = String(archivInput.value).match(/[\d\.\,]+/g);
       if (archivString.length === 1) {
         const sign = archivInput.value.slice(-1);
         const firstNumber = Number(archivInput.value.slice(0, -1));
