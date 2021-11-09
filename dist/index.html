@@ -24,16 +24,16 @@
                 <button value ='%' class="btn btn-func" id="percentButton">%</button>
                 <button value ='e' class="btn btn-func" id="expButton">e</button>
                 <button value='^' class="btn btn-func" id="squareButton">x<sup>2</sup></button>
-                <button value='7' class="btn btn-numb">7</button>
-                <button value='8' class="btn btn-numb">8</button>
-                <button value='9' class="btn btn-numb">9</button>
+                <button value='7' class="btn btn-numb" id="number7">7</button>
+                <button value='8' class="btn btn-numb" id="number8">8</button>
+                <button value='9' class="btn btn-numb" id="number9">9</button>
                 <button value='*' class="btn btn-orange simpleOperation" id="mulButton"><img alt="*" src="https://img.icons8.com/material-outlined/24/ffffff/multiply--v1.png" class="btn-image"/></button>
                 <button value='^' class="btn btn-func" id="cubeButton">x<sup>3</sup></button>
                 <button value='^' class="btn btn-func" id="numByPowerButton">x<sup>y</sup></button>
                 <button value='exp'class="btn btn-func" id="expByPowerButton">e<sup>x</sup></button>
-                <button value='4' class="btn btn-numb">4</button>
-                <button value='5' class="btn btn-numb">5</button>
-                <button value='6' class="btn btn-numb">6</button>
+                <button value='4' class="btn btn-numb" id="number4">4</button>
+                <button value='5' class="btn btn-numb" id="number5">5</button>
+                <button value='6' class="btn btn-numb" id="number6">6</button>
                 <button value='-'class="btn btn-orange simpleOperation" id="subButton">-</button>
                 <button value='1/x' class="btn btn-func" id="oneDivByNumberButton">1/x</button>
                 <button value='√' class="btn btn-func" id="squareRootButton"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" alt="√"
@@ -46,9 +46,9 @@
                     viewBox="0 0 172 172"
                     style=" fill:#ffffff;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="none" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none" stroke="none" stroke-width="1"></path><g fill="#ffffff" stroke="none" stroke-width="1"><path d="M117.41015,21.5l-45.74349,91.47298l-17.07682,-34.13965h-25.92318v14.33333h17.07682l25.92318,51.86035l54.58985,-109.19368h24.24349v-14.33333z"></path></g><g fill="#ffffff" stroke="none" stroke-width="1"><path d="M37.485,46.055v-7.06h4.81c2.29333,0 3.99333,-0.57333 5.1,-1.72c1.1,-1.14667 1.65,-2.66667 1.65,-4.56v0c0,-1.83333 -0.54667,-3.26 -1.64,-4.28c-1.09333,-1.02 -2.59667,-1.53 -4.51,-1.53v0c-1.73333,0 -3.18333,0.47333 -4.35,1.42c-1.16667,0.94667 -1.75,2.18 -1.75,3.7v0h-9.03c0,-2.37333 0.64,-4.50333 1.92,-6.39c1.28667,-1.88667 3.08,-3.36 5.38,-4.42c2.3,-1.06 4.83667,-1.59 7.61,-1.59v0c4.81333,0 8.58333,1.15 11.31,3.45c2.73333,2.3 4.1,5.47 4.1,9.51v0c0,2.08667 -0.63667,4.00333 -1.91,5.75c-1.27333,1.75333 -2.94,3.1 -5,4.04v0c2.56,0.91333 4.47,2.28667 5.73,4.12c1.26,1.83333 1.89,4 1.89,6.5v0c0,4.04 -1.47333,7.28 -4.42,9.72c-2.94667,2.44 -6.84667,3.66 -11.7,3.66v0c-4.54,0 -8.25333,-1.2 -11.14,-3.6c-2.88667,-2.39333 -4.33,-5.56 -4.33,-9.5v0h9.03c0,1.70667 0.64,3.10333 1.92,4.19c1.28667,1.08 2.86667,1.62 4.74,1.62v0c2.14667,0 3.82667,-0.56667 5.04,-1.7c1.22,-1.13333 1.83,-2.63667 1.83,-4.51v0c0,-4.54667 -2.5,-6.82 -7.5,-6.82v0z"></path></g><path d="M17.205,76.375v-66.75h51.59v66.75z" fill="#ffffff" stroke="#50e3c2" stroke-width="3" opacity="0"></path></g></svg>
                 </button>
-                <button value='1' class="btn btn-numb">1</button>
-                <button value='2' class="btn btn-numb">2</button>
-                <button value='3' class="btn btn-numb">3</button>
+                <button value='1' class="btn btn-numb" id="number1">1</button>
+                <button value='2' class="btn btn-numb" id="number2">2</button>
+                <button value='3' class="btn btn-numb" id="number3">3</button>
                 <button value='+' class="btn btn-orange simpleOperation" id="addButton">+</button>
                 <button class="btn btn-func" id="numRootButton"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" alt="y√"
                     width="24" height="24"
@@ -57,7 +57,7 @@
                 </button>
                 <button value='ln' class="btn btn-func" id="lnButton">ln</button>
                 <button value='log' class="btn btn-func" id="logButton">log<sub>10</sub></button>
-                <button value='0' class="btn btn-zero btn-numb">0</button>
+                <button value='0' class="btn btn-zero btn-numb" id="number0">0</button>
                 <button value='.' class="btn btn-numb">,</button>
                 <button class="btn btn-orange" id="equalButton">=</button>
             </div>
