@@ -23,7 +23,7 @@ document.querySelectorAll('.btn').forEach((btn) => btn.addEventListener('click',
       calc.render(new (switchOperation(e.currentTarget.value))().execute());
       break;
     case 'oneDivByNumberButton':
-      calc.render(new (switchOperation(e.currentTarget.value))(1, resultInput.value).execute());
+      calc.render(new (switchOperation(e.currentTarget.value))(1, resultInput.value).execute(), `1/${resultInput.value}`);
       break;
     case 'squareRootButton':
       calc.render(new (switchOperation(e.currentTarget.value))(resultInput.value, 2).execute());
