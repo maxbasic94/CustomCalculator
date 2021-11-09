@@ -5,7 +5,7 @@ import Memory from './commands/Memory'
 const resultInput = document.querySelector('.result');
 const archivInput = document.querySelector('.archiv');
 const calc = new Calc(resultInput, archivInput);
-let memory = new Memory('');
+const memory = new Memory('');
 
 document.querySelector('.buttons').addEventListener('click', (e) => {
   if (resultInput.value === 'division by zero') {
