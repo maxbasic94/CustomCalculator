@@ -72,7 +72,7 @@ document.querySelectorAll('.btn').forEach((btn) => btn.addEventListener('click',
       const firstNumber = Number(archivInput.value.slice(0, -1));
       const secondNumber = Number(resultInput.value);
       const res = new (switchOperation(sign))(firstNumber, secondNumber).execute();
-      if (!(sign === '^' && (secondNumber === 2 || secondNumber === 3))) { archivInput.value += secondNumber }
+      if (!(sign === '^' && (secondNumber === 2 || secondNumber === 3))) { calc.render(undefined, secondNumber) }
       calc.render(res);
     } else {
       return;
