@@ -68,7 +68,7 @@ document.querySelectorAll('.btn').forEach((btn) => btn.addEventListener('click',
       if (archivInput.value) {
         let archivString = String(archivInput.value).match(/[\d\.\,]+/g);
         if (archivString.length > 1) {
-          calc.render('', resultInput.value + '+');
+          calc.render('', resultInput.value + e.currentTarget.value);
         } else {
           let firstNumber = Number(archivString[0]);
           let secondNumber = Number(resultInput.value);
