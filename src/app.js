@@ -1,9 +1,9 @@
 import getOperation from './cmdDistribution'
-import {resultInput, archivInput, calc, memory, divButtons, allButtons} from './getVariables'
+import {resultInput, archivInput, calc, memory, divButtons} from './getVariables'
 
 divButtons.addEventListener('click', () => {
   if (resultInput.value === 'division by zero') {
-    allButtons.forEach((button) => {
+    document.querySelectorAll('.btn').forEach((button) => {
       if (button.id !== 'clearButton') { button.setAttribute("disabled", true) }
     }) 
   } 
@@ -46,7 +46,9 @@ divButtons.addEventListener('click', ({target}) => {
 
   if(button.classList.contains('clear')) {
     calc.render('', '', '0');
-    allButtons.forEach((button) => {button.removeAttribute("disabled")});
+    document.querySelectorAll('.btn').forEach((button) => {
+      button.removeAttribute("disabled");
+    }) 
   }
 
   if(button.classList.contains('backspace')) {
