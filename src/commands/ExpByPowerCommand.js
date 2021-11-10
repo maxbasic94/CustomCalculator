@@ -8,7 +8,6 @@ class ExpByPowerCommand extends BaseCommand {
     
     execute() {
         if (!this.power) {return ''};
-        document.querySelector(".archiv").value = 'exp(' + this.power + ')';
         return 2.718281828459045 ** this.power;
     }
 }

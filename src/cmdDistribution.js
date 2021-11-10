@@ -9,7 +9,7 @@ import PercentCommand from './commands/PercentCommand'
 import LnCommand from './commands/LnCommand'
 import LogCommand from './commands/LogCommand'
 import ExpByPowerCommand from './commands/ExpByPowerCommand'
-import ExpCommand from './commands/ExpCommand copy'
+import ExpCommand from './commands/ExpCommand'
 
 function getOperation(sign) {
     switch (sign) {

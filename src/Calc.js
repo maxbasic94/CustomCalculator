@@ -42,7 +42,7 @@ class Calc {
         if (button.value === 'ln') return 'ln(' + value + ')';
         if (button.value === 'log') return 'log(' + value + ')';
         if (button.value === '1/x') return '1/' + value;
-        
+        if (button.value === 'exp') return 'exp(' + value + ')';
     }
 }
 
