@@ -70,8 +70,6 @@ document.querySelectorAll('.btn').forEach((btn) => btn.addEventListener('click',
       const res = new (switchOperation(sign))(firstNumber, secondNumber).execute();
       if (!(sign === '^' && (secondNumber === 2 || secondNumber === 3))) { calc.render(undefined, secondNumber) }
       calc.render(res);
-    } else {
-      return;
     }
   }
 
