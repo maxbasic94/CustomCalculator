@@ -45,6 +45,8 @@ Basic operations:
     * bundle.js - contains JavaScript code.  
 2. Folder "src" contains folder "commands" and some files: 
     * folder "commands" - contains files with classes.
-    * app.js - contains main JavaScrip code.
+    * app.js - contains main JavaScript code.
+    * Calc.js - class to process actions.
+    * getVariables.js - contains JavaScript code, which initialize variables.
     * cmdDistribution.js - contains code which distributions command from simple operations buttons.
     * commands.test.js - contains unit tests for classes.
