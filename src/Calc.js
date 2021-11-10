@@ -4,10 +4,6 @@ class Calc {
         this.archiv = archiv;
     }
     
-    execute() {
-        return 'method is not implemended'
-    }
-
     render(inputValue, archivValue, placeholder) {
         if (inputValue !== undefined) {this.input.value = inputValue};
         if (archivValue !== undefined) {this.archiv.value = archivValue};
