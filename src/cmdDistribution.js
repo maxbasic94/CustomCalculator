@@ -3,7 +3,7 @@ import SubCommand from './commands/SubCommand'
 import MulCommand from './commands/MulCommand'
 import DivCommand from './commands/DivCommand'
 import PowCommand from './commands/PowCommand'
-import SquareCommand from './commands/SquareRootCommand'
+import SquareCommand from './commands/RootCommand'
 import OneDivByNumCommand from './commands/OneDivByNumCommand'
 import PercentCommand from './commands/PercentCommand'
 import LnCommand from './commands/LnCommand'
@@ -11,7 +11,7 @@ import LogCommand from './commands/LogCommand'
 import ExpByPowerCommand from './commands/ExpByPowerCommand'
 import ExpCommand from './commands/ExpCommand copy'
 
-function switchOperation(sign) {
+function getOperation(sign) {
     switch (sign) {
       case '+': return AddCommand;
       case '-': return SubCommand;
@@ -29,4 +29,4 @@ function switchOperation(sign) {
     }
 }
 
-export default switchOperation;
+export default getOperation;

@@ -20,6 +20,30 @@ class Calc {
         const secondNumber = Number(this.input.value);
         return [firstNumber, sign, secondNumber];
     }
+
+    getButton(target) {
+        if(target.classList.contains('btn')) {
+            return target;
+        } else {
+            return target.parentNode;
+        }
+    }
+
+    getPowArchivValue(button, value, pow) {
+        if(button.value === '^') {
+            return value + button.value + pow
+        } else {
+            return pow + button.value + value
+        }
+    }
+
+    getArchivValue(button, value) {
+        if (button.value === '%') return value + button.value;
+        if (button.value === 'ln') return 'ln(' + value + ')';
+        if (button.value === 'log') return 'log(' + value + ')';
+        if (button.value === '1/x') return '1/' + value;
+        
+    }
 }
 
 export default Calc;

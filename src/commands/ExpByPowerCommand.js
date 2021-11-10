@@ -3,7 +3,7 @@ import BaseCommand from "./BaseCommand";
 class ExpByPowerCommand extends BaseCommand {
     constructor(power) {
         super();
-        this.power = Number(power);
+        this.power = power;
     }
     
     execute() {
