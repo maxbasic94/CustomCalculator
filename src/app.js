@@ -1,36 +1,36 @@
 import getOperation from './cmdDistribution'
-import {resultInput, archivInput, calc, memory, divButtons} from './getVariables'
+import { resultInput, archivInput, calc, memory, divButtons } from './getVariables'
 
-divButtons.addEventListener('click', ({target}) => {
+divButtons.addEventListener('click', ({ target }) => {
   const button = calc.getButton(target);
   if (resultInput.value === 'division by zero') {
     document.querySelectorAll('.btn').forEach((button) => {
       if (button.id !== 'clearButton') { button.setAttribute("disabled", true) }
-    }) 
+    })
   } else {
-    if(button.classList.contains('btn-numb')) calc.addNumber(button.value);
+    if (button.classList.contains('btn-numb')) calc.addNumber(button.value);
 
-    if(button.classList.contains('simpleOperation')) {
+    if (button.classList.contains('simpleOperation')) {
       if (archivInput.value) {
         const archivString = String(archivInput.value).match(/[\d\.\,]+/g);
         if (archivString.length > 1) {
           calc.render('', resultInput.value + button.value);
-          } else {
-            const [firstNumber, sign, secondNumber] = calc.getSignAndValues();
-            calc.render('', new (getOperation(sign))(firstNumber, secondNumber).execute() + button.value);
-          }
+        } else {
+          const [firstNumber, sign, secondNumber] = calc.getSignAndValues();
+          calc.render('', new (getOperation(sign))(firstNumber, secondNumber).execute() + button.value);
+        }
       } else {
-      const actualNumber = resultInput.value;
-      calc.render('', actualNumber + button.value, '');
+        const actualNumber = resultInput.value;
+        calc.render('', actualNumber + button.value, '');
       }
     }
 
-    if(button.classList.contains('root-pow')) {
+    if (button.classList.contains('root-pow')) {
       if (!resultInput.value) return;
       calc.render('', resultInput.value + `${button.value}`, '');
     }
 
-    if(button.classList.contains('hardOper')) {
+    if (button.classList.contains('hardOper')) {
       if (button.hasAttribute('pow')) {
         const pow = button.getAttribute('pow');
         const powArchivValue = calc.getPowArchivValue(button, resultInput.value, pow);
@@ -41,7 +41,7 @@ divButtons.addEventListener('click', ({target}) => {
       }
     }
 
-    if(button.classList.contains('backspace')) {
+    if (button.classList.contains('backspace')) {
       if (resultInput.value.slice(0, -1) === '') {
         calc.render(0);
       } else {
@@ -49,7 +49,7 @@ divButtons.addEventListener('click', ({target}) => {
       }
     }
 
-    if(button.classList.contains('equal')) {
+    if (button.classList.contains('equal')) {
       if (!archivInput.value) return;
       const archivString = String(archivInput.value).match(/[\d\.\,]+/g);
       if (archivString.length === 1) {
@@ -61,18 +61,18 @@ divButtons.addEventListener('click', ({target}) => {
       }
     }
 
-    if(button.classList.contains('memory')) {
-      if(button.id === 'memoryClearButton') memory.clear();
-      if(button.id === 'memoryAddButton') memory.writeAdd(resultInput.value);
-      if(button.id === 'memoryDivButton') memory.writeSub(resultInput.value);
-      if(button.id === 'memoryReadButton') calc.render(memory.read());
+    if (button.classList.contains('memory')) {
+      if (button.id === 'memoryClearButton') memory.clear();
+      if (button.id === 'memoryAddButton') memory.writeAdd(resultInput.value);
+      if (button.id === 'memoryDivButton') memory.writeSub(resultInput.value);
+      if (button.id === 'memoryReadButton') calc.render(memory.read());
     }
   }
 
-  if(button.classList.contains('clear')) {
+  if (button.classList.contains('clear')) {
     calc.render('', '', '0');
     document.querySelectorAll('.btn').forEach((button) => {
       button.removeAttribute("disabled");
-    }) 
+    })
   }
 });
