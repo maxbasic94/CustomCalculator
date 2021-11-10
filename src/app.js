@@ -9,8 +9,8 @@ divButtons.addEventListener('click', () => {
   } 
 });
 
-divButtons.addEventListener('click', (event) => {
-  const button = calc.getButton(event.target);
+divButtons.addEventListener('click', ({target}) => {
+  const button = calc.getButton(target);
   if(button.classList.contains('btn-numb')) calc.addNumber(button.value);
 
   if(button.classList.contains('simpleOperation')) {
