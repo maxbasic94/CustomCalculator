@@ -1,7 +1,7 @@
-import Calc from "./Calc";
+import BaseCommand from "./BaseCommand";
 import { calc } from "../app";
 
-class SquareCommand extends Calc {
+class SquareCommand extends BaseCommand {
     constructor(num, pow) {
         super();
         this.num = Number(num);

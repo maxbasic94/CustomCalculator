@@ -1,6 +1,6 @@
-import Calc from "./Calc";
+import BaseCommand from "./BaseCommand";
 
-class ExpByPowerCommand extends Calc {
+class ExpByPowerCommand extends BaseCommand {
     constructor(power) {
         super();
         this.power = Number(power);

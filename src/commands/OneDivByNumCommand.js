@@ -1,7 +1,7 @@
-import Calc from "./Calc";
+import BaseCommand from "./BaseCommand";
 import { calc } from "../app";
 
-class OneDivByNumCommand extends Calc {
+class OneDivByNumCommand extends BaseCommand {
     constructor(rightNumber) {
         super();
         this.leftNumber = 1;

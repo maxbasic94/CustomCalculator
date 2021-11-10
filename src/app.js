@@ -1,5 +1,5 @@
 import switchOperation from './cmdDistribution'
-import Calc from './commands/Calc';
+import Calc from './Calc';
 import Memory from './commands/Memory'
 
 const resultInput = document.querySelector('.result');
@@ -80,5 +80,3 @@ document.querySelectorAll('.btn').forEach((btn) => btn.addEventListener('click',
     if(e.currentTarget.id === 'memoryReadButton') calc.render(memory.read());
   }
 }));
-
-export {calc};

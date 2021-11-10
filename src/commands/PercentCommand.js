@@ -1,7 +1,7 @@
-import Calc from "./Calc";
+import BaseCommand from "./BaseCommand";
 import { calc } from "../app";
 
-class PercentCommand extends Calc {
+class PercentCommand extends BaseCommand {
     constructor(rightNumber) {
         super();
         this.leftNumber = 100;

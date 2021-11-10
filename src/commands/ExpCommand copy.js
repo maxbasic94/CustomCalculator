@@ -1,6 +1,6 @@
-import Calc from "./Calc";
+import BaseCommand from "./BaseCommand";
 
-class ExpCommand extends Calc {
+class ExpCommand extends BaseCommand {
     constructor() {
         super();
     }

@@ -1,6 +1,6 @@
-import Calc from "./Calc";
+import BaseCommand from "./BaseCommand";
 
-class LnCommand extends Calc {
+class LnCommand extends BaseCommand {
     constructor(actualNumber) {
         super();
         this.actualNumber = Number(actualNumber)

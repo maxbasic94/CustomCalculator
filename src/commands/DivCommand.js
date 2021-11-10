@@ -1,6 +1,6 @@
-import Calc from "./Calc";
+import BaseCommand from "./BaseCommand";
 
-class DivCommand extends Calc {
+class DivCommand extends BaseCommand {
     constructor(num1, num2) {
         super();
         this.num1 = num1;
