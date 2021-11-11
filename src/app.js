@@ -56,8 +56,6 @@ divButtons.addEventListener('click', ({ target }) => {
         const [firstNumber, sign, secondNumber] = calc.getSignAndValues();
         const res = new (getOperation(sign))(firstNumber, secondNumber).execute();
         calc.render(res, archivInput.value += secondNumber);
-      } else {
-        return;
       }
     }
 
